@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guia de defesa: Campanhas de Marketing Digital (14/10)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F4F7F9; --surface:#FFFFFF; --ink:#16232E; --muted:#51616F; --line:#D5DEE5;
+  --accent:#0E5A78; --accent-soft:#E1EFF5; --ok:#1E7A4F; --ok-soft:#E3F3EA; --warn:#9A5B00; --warn-soft:#FBEFD9;
+  --google:#2F6FD0; --meta:#7A56B8; --insta:#C03B79; --linkedin:#238067;
+  --head:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif; --body:"IBM Plex Sans","Segoe UI",system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0F1A22; --surface:#16252F; --ink:#E6EEF3; --muted:#9FB1BE; --line:#2B3E4B;
+    --accent:#6CC0E0; --accent-soft:#17323F; --ok:#6FD3A0; --ok-soft:#163A2B; --warn:#F0B35A; --warn-soft:#3A2D12;
+    --google:#74A5F2; --meta:#B79CEB; --insta:#F07DAE; --linkedin:#5FCDAE;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0F1A22; --surface:#16252F; --ink:#E6EEF3; --muted:#9FB1BE; --line:#2B3E4B;
+  --accent:#6CC0E0; --accent-soft:#17323F; --ok:#6FD3A0; --ok-soft:#163A2B; --warn:#F0B35A; --warn-soft:#3A2D12;
+  --google:#74A5F2; --meta:#B79CEB; --insta:#F07DAE; --linkedin:#5FCDAE;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 var(--body)}
+.wrap{max-width:900px;margin:0 auto;padding:0 20px}
+header.top{padding:44px 0 28px;border-bottom:1px solid var(--line)}
+header.top h1{font:700 clamp(28px,5vw,42px)/1.1 var(--head);margin:0 0 10px;letter-spacing:-.01em}
+header.top p{margin:4px 0;color:var(--muted);max-width:68ch}
+header.top .meta{margin-top:14px;font-size:14px}
+nav.chips{position:sticky;top:0;z-index:10;background:var(--bg);border-bottom:1px solid var(--line);padding:10px 0}
+nav.chips .wrap{display:flex;gap:8px;overflow-x:auto;align-items:center}
+nav.chips a{white-space:nowrap;font-size:14px;color:var(--ink);text-decoration:none;border:1px solid var(--line);background:var(--surface);padding:5px 12px;border-radius:999px}
+nav.chips a:hover,nav.chips a:focus-visible{border-color:var(--accent);color:var(--accent);outline:none}
+.tools{display:flex;gap:10px;flex-wrap:wrap;margin:22px 0 4px}
+.tools input{flex:1 1 240px;padding:10px 14px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink);font:inherit}
+.tools button{padding:10px 14px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink);font:inherit;cursor:pointer}
+.tools button:hover,.tools input:focus,.tools button:focus-visible{border-color:var(--accent);outline:none}
+section{padding:34px 0 6px}
+section>h2{font:700 27px/1.2 var(--head);margin:0 0 6px;letter-spacing:-.005em}
+section>.lead{color:var(--muted);margin:0 0 18px;max-width:68ch}
+h3{font:700 18px/1.3 var(--head);margin:22px 0 8px}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px 20px;margin:14px 0}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:720px){.grid2{grid-template-columns:1fr}}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:14px 0}
+.kpi{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.kpi b{display:block;font:700 24px/1.15 var(--head)}
+.kpi span{font-size:13px;color:var(--muted)}
+table{width:100%;border-collapse:collapse;font-size:14.5px;margin:10px 0}
+.scroll{overflow-x:auto;margin:10px 0;border:1px solid var(--line);border-radius:10px;background:var(--surface)}
+.scroll table{margin:0}
+th,td{padding:9px 12px;border-bottom:1px solid var(--line);text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+th:first-child,td:first-child{text-align:left}
+th{font-weight:600;color:var(--muted);font-size:13px;background:var(--accent-soft)}
+tr:last-child td{border-bottom:0}
+td.txt,th.txt{text-align:left;white-space:normal}
+.dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:8px;vertical-align:baseline}
+.g{background:var(--google)}.m{background:var(--meta)}.i{background:var(--insta)}.l{background:var(--linkedin)}
+tr.best td{font-weight:600}
+td.hi{color:var(--ok);font-weight:600}
+td.lo{color:var(--insta);font-weight:600}
+details.qa{background:var(--surface);border:1px solid var(--line);border-radius:10px;margin:10px 0}
+details.qa>summary{cursor:pointer;list-style:none;padding:14px 18px 14px 46px;font-weight:600;position:relative}
+details.qa>summary::-webkit-details-marker{display:none}
+details.qa>summary::before{content:"+";position:absolute;left:16px;top:11px;width:22px;height:22px;border-radius:50%;background:var(--accent-soft);color:var(--accent);text-align:center;line-height:22px;font-weight:700}
+details.qa[open]>summary::before{content:"\2212"}
+details.qa[open]>summary{border-bottom:1px solid var(--line)}
+details.qa>summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:10px}
+.ans{padding:14px 20px 18px}
+.ans p{margin:8px 0}
+.ans ul,.ans ol{margin:8px 0;padding-left:22px}
+.ans li{margin:4px 0}
+.short{background:var(--ok-soft);border-left:4px solid var(--ok);padding:10px 14px;border-radius:0 8px 8px 0;margin:0 0 12px!important}
+.note{background:var(--warn-soft);border-left:4px solid var(--warn);padding:10px 14px;border-radius:0 8px 8px 0;margin:12px 0}
+.say{background:var(--accent-soft);border-left:4px solid var(--accent);padding:12px 16px;border-radius:0 8px 8px 0;margin:12px 0}
+code,.f{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.92em;background:var(--accent-soft);padding:1px 6px;border-radius:4px}
+.bars{margin:12px 0}
+.bar-row{display:grid;grid-template-columns:110px 1fr;gap:10px;align-items:center;margin:6px 0;font-size:14px}
+.bar-pair{display:grid;gap:3px}
+.bar{height:14px;border-radius:3px;position:relative}
+.bar span{position:absolute;left:calc(100% + 6px);top:-3px;font-size:12.5px;color:var(--muted);white-space:nowrap}
+.legend{font-size:13px;color:var(--muted);margin:2px 0 0}
+.status{display:inline-block;font-size:12.5px;font-weight:600;padding:2px 9px;border-radius:999px}
+.status.ok{background:var(--ok-soft);color:var(--ok)}
+.status.warn{background:var(--warn-soft);color:var(--warn)}
+footer{padding:36px 0 60px;color:var(--muted);font-size:14px}
+.hidden{display:none!important}
+@media print{
+  nav.chips,.tools{display:none}
+  body{background:#fff;color:#000}
+  details.qa{break-inside:avoid}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <h1>Guia de defesa: campanhas de Marketing Digital</h1>
+    <p>Perguntas prováveis da professora e respostas baseadas no notebook e no CSV do grupo. Cada resposta traz um trecho curto para falar em voz alta e, abaixo, os números de apoio.</p>
+    <p class="meta">Apresentação em 14/10/2026 · Unidade 4, Aula 08: Laboratório de Ciência de Dados aplicado ao Marketing Digital · Grupo: Mell Lima, Pedro Henrique Nobre de Araujo, Pedro Lucas e Daniel Camara</p>
+  </div>
+</header>
+
+<nav class="chips" aria-label="Seções">
+  <div class="wrap">
+    <a href="#visao">Visão geral</a>
+    <a href="#etapa6">Apresentação (2 min)</a>
+    <a href="#ex1">Ex. 1</a>
+    <a href="#ex2">Ex. 2</a>
+    <a href="#ex3">Ex. 3</a>
+    <a href="#ex4">Ex. 4</a>
+    <a href="#ex5">Ex. 5</a>
+    <a href="#guia">Questões orientadoras</a>
+    <a href="#discussao">Discussão</a>
+    <a href="#entrega">Entrega</a>
+  </div>
+</nav>
+
+<main class="wrap">
+
+<div class="tools">
+  <input id="busca" type="search" placeholder="Buscar pergunta (ex.: ROAS, causalidade, lead)" aria-label="Buscar pergunta">
+  <button id="abrir" type="button">Abrir todas</button>
+  <button id="fechar" type="button">Fechar todas</button>
+  <button id="tema" type="button">Alternar tema</button>
+</div>
+
+<!-- ============ VISÃO GERAL ============ -->
+<section id="visao">
+  <h2>Visão geral do briefing e do trabalho</h2>
+  <p class="lead">O que a professora pediu e o que o grupo fez.</p>
+
+  <div class="grid2">
+    <div class="panel">
+      <h3 style="margin-top:0">O briefing (aula de 30/09/2026)</h3>
+      <ul>
+        <li>Registro dos grupos para apresentação em <b>14/10</b>.</li>
+        <li>Entrega <b>no GitHub</b>: (1) notebook executado ou arquivo de análise, (2) tabela com métricas por canal, (3) pelo menos três gráficos com interpretação, (4) três insights, (5) duas recomendações, (6) conclusão de 100 a 150 palavras, (7) registro das limitações.</li>
+        <li>Orientação em rosa: <b>1 gráfico por integrante</b> e <b>1 descoberta por integrante</b> na apresentação.</li>
+        <li>Apresentação em até <b>2 minutos</b>: descoberta principal, gráfico mais relevante, principal insight, recomendação e limite da análise.</li>
+      </ul>
+    </div>
+    <div class="panel">
+      <h3 style="margin-top:0">O trabalho do grupo</h3>
+      <ul>
+        <li><b>Base:</b> <code>campanhas_marketing_digital.csv</code>, com 24 registros e 12 variáveis: 4 canais × 6 semanas (03/08 a 07/09/2026).</li>
+        <li><b>Canais e campanhas:</b> Google Ads (Pesquisa Marca, fundo de funil), Meta Ads (Conversão Social, meio), Instagram (Conteúdo Impulsionado, topo) e LinkedIn Ads (Leads B2B, meio).</li>
+        <li><b>Pergunta de negócio:</b> quais canais geram mais conversões e quais têm melhor eficiência e retorno?</li>
+        <li><b>Hipótese:</b> canais com mais investimento podem gerar mais conversões, a verificar nos dados.</li>
+        <li><b>Etapas:</b> diagnóstico, limpeza, métricas por linha, agregação por canal, 3 gráficos, correlação, conclusão.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="kpis">
+    <div class="kpi"><b>R$ 26.680</b><span>investimento total</span></div>
+    <div class="kpi"><b>951</b><span>conversões</span></div>
+    <div class="kpi"><b>R$ 145.450</b><span>receita total</span></div>
+    <div class="kpi"><b>5,45</b><span>ROAS geral</span></div>
+    <div class="kpi"><b>R$ 28,05</b><span>CPA geral</span></div>
+    <div class="kpi"><b>0,79</b><span>correlação investimento × conversões</span></div>
+  </div>
+
+  <h3>Resultado por canal (tabela do notebook)</h3>
+  <div class="scroll">
+  <table>
+    <thead><tr><th>Canal</th><th>Investimento</th><th>Conversões</th><th>Receita</th><th>CTR</th><th>Taxa de conv.</th><th>CPC</th><th>CPA</th><th>ROAS</th></tr></thead>
+    <tbody>
+      <tr class="best"><td><span class="dot g"></span>Google Ads</td><td>R$ 8.250</td><td class="hi">416</td><td>R$ 62.400</td><td class="hi">5,43%</td><td class="hi">2,20%</td><td>R$ 0,44</td><td class="hi">R$ 19,83</td><td class="hi">7,56</td></tr>
+      <tr><td><span class="dot m"></span>Meta Ads</td><td>R$ 7.100</td><td>296</td><td>R$ 36.950</td><td>2,98%</td><td>1,92%</td><td>R$ 0,46</td><td>R$ 23,99</td><td>5,20</td></tr>
+      <tr><td><span class="dot i"></span>Instagram</td><td>R$ 4.830</td><td>128</td><td>R$ 12.800</td><td class="lo">1,96%</td><td class="lo">1,05%</td><td>R$ 0,40</td><td>R$ 37,73</td><td class="lo">2,65</td></tr>
+      <tr><td><span class="dot l"></span>LinkedIn Ads</td><td>R$ 6.500</td><td class="lo">111</td><td>R$ 33.300</td><td>2,89%</td><td>1,82%</td><td class="lo">R$ 1,06</td><td class="lo">R$ 58,56</td><td>5,12</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="legend">Verde: melhor da coluna. Rosa: ponto de atenção. CTR = cliques ÷ impressões; taxa de conversão = conversões ÷ cliques; CPC = investimento ÷ cliques; CPA = investimento ÷ conversões; ROAS = receita ÷ investimento.</p>
+</section>
+
+<!-- ============ ETAPA 6 ============ -->
+<section id="etapa6">
+  <h2>Etapa 6: apresentação em 2 minutos</h2>
+  <p class="lead">Roteiro com cerca de 200 palavras, que cabe em 2 minutos de fala. Se cada integrante apresentar um gráfico e uma descoberta, divida os blocos entre vocês.</p>
+
+  <details class="qa" open>
+    <summary>Roteiro falado (descoberta, gráfico, insight, recomendação, limite)</summary>
+    <div class="ans">
+      <div class="say">
+        <p><b>1. Descoberta principal.</b> Analisamos 24 registros semanais de quatro canais, de 3 de agosto a 7 de setembro. O Google Ads foi o mais eficiente em tudo o que mede resultado: 416 conversões, CPA de R$ 19,83 e ROAS de 7,56.</p>
+        <p><b>2. Gráfico mais relevante.</b> O de investimento versus conversões. Quanto mais se investe, mais se converte, com correlação de 0,79, e os pontos do Google Ads ficam acima dos demais: converte mais por real investido.</p>
+        <p><b>3. Principal insight.</b> O LinkedIn tem o maior CPA, R$ 58,56, quase o triplo do Google, e o Instagram tem o menor ROAS, 2,65. Além disso, as conversões subiram em todos os canais, mas o investimento subiu junto: 44% a mais de investimento para 34% a mais de conversões entre a primeira e a última semana.</p>
+        <p><b>4. Recomendação.</b> Testar um aumento gradual de orçamento no Google Ads, com grupo de controle, e investigar o LinkedIn antes de ampliar a verba.</p>
+        <p><b>5. Limite da análise.</b> Só 24 registros, um lead ausente no Instagram, e correlação não prova causalidade. Faltam margem, LTV e modelo de atribuição.</p>
+      </div>
+    </div>
+  </details>
+
+  <details class="qa">
+    <summary>Qual é o gráfico mais relevante e por quê?</summary>
+    <div class="ans">
+      <p class="short">O Gráfico 3 (investimento × conversões), porque conecta a hipótese inicial do grupo aos dados e mostra a diferença de eficiência entre canais.</p>
+      <p>Ele traz a correlação de 0,79 e mostra que, para um mesmo nível de investimento, o Google Ads fica acima dos outros canais. O Gráfico 1 mostra quem converte mais; o Gráfico 2 mostra a evolução semanal, mas deve ser lido com o aviso de que o investimento também subiu.</p>
+    </div>
+  </details>
+</section>
+
+<!-- ============ EXERCÍCIO 1 ============ -->
+<section id="ex1">
+  <h2>Exercício 1: diagnóstico dos dados</h2>
+
+  <details class="qa">
+    <summary>a) Quantos registros e variáveis a base tem?</summary>
+    <div class="ans">
+      <p class="short"><b>24 registros e 12 variáveis</b> (<code>df.shape</code> retornou (24, 12)).</p>
+      <p>Cada registro é uma semana de um canal: 4 canais × 6 semanas (03/08, 10/08, 17/08, 24/08, 31/08 e 07/09). Variáveis: data, canal, campanha, etapa_funil, investimento, impressoes, alcance, cliques, interacoes, leads, conversoes e receita. Não há linhas duplicadas.</p>
+    </div>
+  </details>
+
+  <details class="qa">
+    <summary>b) Como classificar canal, investimento, data e conversões?</summary>
+    <div class="ans">
+      <div class="scroll">
+      <table>
+        <thead><tr><th>Variável</th><th class="txt">Tipo</th><th class="txt">Justificativa</th></tr></thead>
+        <tbody>
+          <tr><td><code>canal</code></td><td class="txt">Qualitativa nominal (categórica)</td><td class="txt">Rótulos sem ordem natural: Google Ads, Meta Ads, Instagram, LinkedIn Ads.</td></tr>
+          <tr><td><code>investimento</code></td><td class="txt">Quantitativa contínua (razão)</td><td class="txt">Valor monetário em R$; faz sentido somar, comparar e dividir; zero significa ausência de gasto.</td></tr>
+          <tr><td><code>data</code></td><td class="txt">Temporal (datetime)</td><td class="txt">Registra a semana; tem ordem, e a diferença entre datas tem sentido. Convertida com <code>pd.to_datetime</code>.</td></tr>
+          <tr><td><code>conversoes</code></td><td class="txt">Quantitativa discreta (contagem)</td><td class="txt">Número inteiro de conversões.</td></tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
+  </details>
+
+  <details class="qa">
+    <summary>c) Onde está uma ausência e uma inconsistência categórica?</summary>
+    <div class="ans">
+      <p class="short"><b>Ausência:</b> o campo <code>leads</code> do Instagram em 24/08/2026 está vazio. <b>Inconsistência:</b> em 10/08/2026 o canal aparece como "Instagram " (com espaço no final).</p>
+      <ul>
+        <li><b>Ausência:</b> <code>df.isna().sum()</code> mostrou 1 valor nulo, só em <code>leads</code>. A linha tem 22 conversões e R$ 2.200 de receita registradas.</li>
+        <li><b>Inconsistência:</b> <code>df['canal'].unique()</code> listava cinco valores, e "Instagram " era tratado como categoria à parte. Foi corrigida com <code>df['canal'].str.strip()</code>, e ficaram quatro canais. Sem isso, o groupby separaria o Instagram em duas linhas e as métricas do canal sairiam erradas.</li>
+      </ul>
+    </div>
+  </details>
+
+  <details class="qa">
+    <summary>d) Por que não substituir automaticamente um lead ausente por zero?</summary>
+    <div class="ans">
+      <p class="short">Porque zero é um valor real ("não houve leads"), e aqui o dado só está <b>desconhecido</b>. Trocar por zero cria uma informação falsa e distorce os resultados.</p>
+      <ul>
+        <li>A mesma linha tem 22 conversões. Zero lead com 22 conversões é incoerente com a lógica do funil.</li>
+        <li>Zero puxaria para baixo a soma, a média e as razões que usam leads (custo por lead, taxa de lead para conversão) do Instagram.</li>
+        <li>O grupo manteve o valor como <code>NaN</code>: o pandas ignora nulos nas somas, mas isso significa que o total de 408 leads do Instagram cobre só 5 das 6 semanas e <b>subestima</b> o canal.</li>
+        <li>Alternativas defensáveis: confirmar na fonte da plataforma; ou estimar com a razão leads/conversões do próprio canal nas outras semanas (cerca de 26% de conversões por lead, o que daria algo perto de 85 leads), sempre marcando o valor como estimado.</li>
+      </ul>
+    </div>
+  </details>
+</section>
+
+<!-- ============ EXERCÍCIO 2 ============ -->
+<section id="ex2">
+  <h2>Exercício 2: métricas de um registro</h2>
+
+  <details class="qa">
+    <summary>Para Google Ads em 03/08/2026, calcule CTR, taxa de conversão, CPC, CPA e ROAS</summary>
+    <div class="ans">
+      <p class="short">CTR <b>5,00%</b> · Taxa de conversão <b>2,23%</b> · CPC <b>R$ 0,46</b> · CPA <b>R$ 20,69</b> · ROAS <b>7,25</b></p>
+      <p>Dados do registro: investimento R$ 1.200; impressões 52.000; cliques 2.600; conversões 58; receita R$ 8.700.</p>
+      <div class="scroll">
+      <table>
+        <thead><tr><th>Métrica</th><th class="txt">Fórmula</th><th class="txt">Conta</th><th>Resultado</th></tr></thead>
+        <tbody>
+          <tr><td>CTR</td><td class="txt">cliques ÷ impressões × 100</td><td class="txt">2.600 ÷ 52.000 × 100</td><td>5,00%</td></tr>
+          <tr><td>Taxa de conversão</td><td class="txt">conversões ÷ cliques × 100</td><td class="txt">58 ÷ 2.600 × 100</td><td>2,23%</td></tr>
+          <tr><td>CPC</td><td class="txt">investimento ÷ cliques</td><td class="txt">1.200 ÷ 2.600</td><td>R$ 0,46</td></tr>
+          <tr><td>CPA</td><td class="txt">investimento ÷ conversões</td><td class="txt">1.200 ÷ 58</td><td>R$ 20,69</td></tr>
+          <tr><td>ROAS</td><td class="txt">receita ÷ investimento</td><td class="txt">8.700 ÷ 1.200</td><td>7,25</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <p>Interpretação do ROAS: cada R$ 1 investido naquela semana gerou R$ 7,25 de receita.</p>
+    </div>
+  </details>
+
+  <details class="qa">
+    <summary>Qual a diferença entre CTR, taxa de conversão, CPC, CPA e ROAS?</summary>
+    <div class="ans">
+      <ul>
+        <li><b>CTR:</b> mede atratividade do anúncio (quantos impressionados clicam).</li>
+        <li><b>Taxa de conversão:</b> mede a qualidade do clique e da página (quantos cliques viram conversão).</li>
+        <li><b>CPC:</b> custo de levar uma pessoa ao site.</li>
+        <li><b>CPA:</b> custo de uma conversão; quanto menor, mais eficiente.</li>
+        <li><b>ROAS:</b> retorno em receita por real investido; é bruto, pois não desconta margem nem custos.</li>
+      </ul>
+    </div>
+  </details>
+</section>
+
+<!-- ============ EXERCÍCIO 3 ============ -->
+<section id="ex3">
+  <h2>Exercício 3: comparação agregada</h2>
+  <p class="lead">A tabela por canal está na visão geral. Abaixo, as cinco respostas.</p>
+
+  <div class="bars" aria-label="Participação no investimento e nas conversões">
+    <div class="bar-row"><span><span class="dot g"></span>Google Ads</span><div class="bar-pair">
+      <div class="bar g" style="width:30.9%"><span>30,9% do investimento</span></div>
+      <div class="bar g" style="width:43.7%;opacity:.65"><span>43,7% das conversões</span></div></div></div>
+    <div class="bar-row"><span><span class="dot m"></span>Meta Ads</span><div class="bar-pair">
+      <div class="bar m" style="width:26.6%"><span>26,6% do investimento</span></div>
+      <div class="bar m" style="width:31.1%;opacity:.65"><span>31,1% das conversões</span></div></div></div>
+    <div class="bar-row"><span><span class="dot l"></span>LinkedIn</span><div class="bar-pair">
+      <div class="bar l" style="width:24.4%"><span>24,4% do investimento</span></div>
+      <div class="bar l" style="width:11.7%;opacity:.65"><span>11,7% das conversões</span></div></div></div>
+    <div class="bar-row"><span><span class="dot i"></span>Instagram</span><div class="bar-pair">
+      <div class="bar i" style="width:18.1%"><span>18,1% do investimento</span></div>
+      <div class="bar i" style="width:13.5%;opacity:.65"><span>13,5% das conversões</span></div></div></div>
+    <p class="legend">Barra sólida: parte do investimento total (R$ 26.680). Barra clara: parte das conversões totais (951).</p>
+  </div>
+
+  <details class="qa">
+    <summary>1. Qual canal possui maior volume de conversões?</summary>
+    <div class="ans">
+      <p class="short"><b>Google Ads: 416 conversões</b> (43,7% do total).</p>
+      <p>Ordem: Google Ads (416), Meta Ads (296), Instagram (128), LinkedIn Ads (111). O Google Ads também foi o canal com maior investimento (R$ 8.250), então parte desse volume vem da escala. Por isso olhamos também as métricas de eficiência.</p>
+    </div>
+  </details>
+
+  <details class="qa">
+    <summary>2. Qual canal apresenta maior taxa de conversão?</summary>
+    <div class="ans">
+      <p class="short"><b>Google Ads: 2,20%</b> (conversões ÷ cliques).</p>
+      <p>Depois vêm Meta Ads (1,92%), LinkedIn Ads (1,82%) e Instagram (1,05%). O Google Ads também lidera em CTR (5,43%), o que é coerente com a campanha "Pesquisa Marca": quem busca a marca já tem intenção.</p>
+    </div>
+  </details>
+
+  <details class="qa">
+    <summary>3. Qual canal apresenta maior ROAS?</summary>
+    <div class="ans">
+      <p class="short"><b>Google Ads: 7,56</b>, ou seja, R$ 7,56 de receita para cada R$ 1 investido.</p>
+      <p>Meta Ads 5,20 · LinkedIn Ads 5,12 · Instagram 2,65. O ROAS geral da base é 5,45.</p>
+    </div>
+  </details>
+
+  <details class="qa">
+    <summary>4. Qual canal possui menor CPA?</summary>
+    <div class="ans">
+      <p class="short"><b>Google Ads: R$ 19,83</b> por conversão.</p>
+      <p>Meta Ads R$ 23,99 · Instagram R$ 37,73 · LinkedIn Ads R$ 58,56 (quase o triplo do Google). O CPA geral é R$ 28,05.</p>
+    </div>
+  </details>
+
+  <details class="qa">
+    <summary>5. Qual canal combina alto investimento e baixo retorno relativo?</summary>
+    <div class="ans">
+      <p class="short"><b>LinkedIn Ads</b> é o que mais se encaixa: o 3º maior investimento (R$ 6.500, 24,4% do total) gerou só 11,7% das conversões, com o maior CPA (R$ 58,56) e o maior CPC (R$ 1,06). O <b>Instagram</b> tem o menor ROAS (2,65), mas é o canal de menor investimento.</p>
+      <ul>
+        <li><b>LinkedIn:</b> pelo critério de custo por conversão, é o ponto de atenção. Porém, cada conversão rende em média R$ 300 de receita (Google: R$ 150), e por isso o ROAS (5,12) fica próximo ao do Meta. Não dá para chamá-lo de "ruim" sem considerar o ticket B2B.</li>
+        <li><b>Instagram:</b> pelo critério de receita, é o pior (18,1% do investimento para 8,8% da receita). Mas é um canal de topo de funil, com o maior alcance (449.900) e as maiores impressões (620.000) e interações (3.535), então o último clique subestima seu papel.</li>
+      </ul>
+      <p>Resposta segura na banca: nomear o LinkedIn como "alto investimento, baixo retorno em conversões" e o Instagram como "menor ROAS, mas com função de topo de funil", explicando os dois critérios.</p>
+    </div>
+  </details>
+</section>
+
+<!-- ============ EXERCÍCIO 4 ============ -->
+<section id="ex4">
+  <h2>Exercício 4: tendência e associação</h2>
+
+  <details class="qa">
+    <summary>a) As conversões aumentam com o tempo em todos os canais?</summary>
+    <div class="ans">
+      <p class="short"><b>Sim em volume:</b> as conversões subiram semana a semana em todos os canais. <b>Mas</b> o investimento também subiu, e a eficiência não melhorou.</p>
+      <div class="scroll">
+      <table>
+        <thead><tr><th>Conversões</th><th>03/08</th><th>10/08</th><th>17/08</th><th>24/08</th><th>31/08</th><th>07/09</th></tr></thead>
+        <tbody>
+          <tr><td><span class="dot g"></span>Google Ads</td><td>58</td><td>63</td><td>67</td><td>72</td><td>76</td><td>80</td></tr>
+          <tr><td><span class="dot m"></span>Meta Ads</td><td>42</td><td>46</td><td>49</td><td>51</td><td>53</td><td>55</td></tr>
+          <tr><td><span class="dot i"></span>Instagram</td><td>18</td><td>20</td><td>21</td><td>22</td><td>23</td><td>24</td></tr>
+          <tr><td><span class="dot l"></span>LinkedIn Ads</td><td>16</td><td>17</td><td>18</td><td>19</td><td>20</td><td>21</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <div class="scroll">
+      <table>
+        <thead><tr><th>ROAS semanal</th><th>03/08</th><th>10/08</th><th>17/08</th><th>24/08</th><th>31/08</th><th>07/09</th></tr></thead>
+        <tbody>
+          <tr><td><span class="dot g"></span>Google Ads</td><td>7,25</td><td>7,56</td><td>7,73</td><td>7,71</td><td>7,60</td><td>7,50</td></tr>
+          <tr><td><span class="dot m"></span>Meta Ads</td><td>5,20</td><td>5,48</td><td>5,57</td><td>5,31</td><td>5,10</td><td>4,74</td></tr>
+          <tr><td><span class="dot i"></span>Instagram</td><td>2,77</td><td>2,86</td><td>2,76</td><td>2,68</td><td>2,56</td><td>2,40</td></tr>
+          <tr><td><span class="dot l"></span>LinkedIn Ads</td><td>5,33</td><td>5,37</td><td>5,40</td><td>5,18</td><td>5,00</td><td>4,67</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <ul>
+        <li>Entre a 1ª e a última semana, o investimento total subiu 44% (R$ 3.750 para R$ 5.400) e as conversões subiram 34% (134 para 180). O ROAS semanal total caiu de 5,47 para 5,11 e o CPA subiu de R$ 27,99 para R$ 30,00.</li>
+        <li>O Google Ads é o único canal em que as conversões cresceram mais que o investimento (+37,9% contra +33,3%). Em Meta, Instagram e LinkedIn, o investimento cresceu mais (+45%, +54% e +50%) do que as conversões (+31%, +33% e +31%).</li>
+        <li>Por isso, "as conversões aumentaram" não significa "o desempenho melhorou".</li>
+      </ul>
+    </div>
+  </details>
+
+  <details class="qa">
+    <summary>b) Calcule a correlação entre investimento e conversões</summary>
+    <div class="ans">
+      <p class="short"><b>r = 0,7857</b> (<code>df['investimento'].corr(df['conversoes'])</code>): associação positiva forte.</p>
+      <ul>
+        <li>Dentro de cada canal a correlação é ainda maior (Google 0,985; LinkedIn 0,979; Instagram 0,969; Meta 0,939), porque investimento e conversões sobem juntos ao longo das semanas.</li>
+        <li>A correlação geral é menor (0,79) porque mistura canais com eficiências diferentes: R$ 1.000 no Instagram rende cerca de 24 conversões, e R$ 900 no LinkedIn rende 16.</li>
+        <li>Para referência, a correlação entre investimento e receita é 0,89.</li>
+        <li>São apenas 24 pontos, e não dá para extrapolar fora da faixa observada (R$ 650 a R$ 1.600 por semana por canal).</li>
+      </ul>
+    </div>
+  </details>
+
+  <details class="qa">
+    <summary>c) Por que correlação não prova causalidade?</summary>
+    <div class="ans">
+      <p class="short">Porque duas variáveis podem andar juntas sem que uma cause a outra: por tendência comum, por terceiro fator ou por causalidade inversa.</p>
+      <ul>
+        <li><b>Tendência comum no tempo:</b> investimento e conversões crescem semana a semana; ambos acompanham o calendário, e não necessariamente um ao outro.</li>
+        <li><b>Causalidade inversa:</b> gestores costumam aumentar verba nos canais que já vão bem, então o bom desempenho pode ter causado o investimento, e não o contrário.</li>
+        <li><b>Terceiros fatores:</b> sazonalidade, mudanças de criativo, promoções, demanda orgânica e efeito de outros canais não estão na base.</li>
+        <li><b>Mistura de canais:</b> a correlação geral junta canais de funil e escala diferentes.</li>
+        <li>Para afirmar causalidade é preciso um experimento (teste A/B ou grupo de controle) que mude só o investimento e mantenha o resto constante.</li>
+      </ul>
+    </div>
+  </details>
+</section>
+
+<!-- ============ EXERCÍCIO 5 ============ -->
+<section id="ex5">
+  <h2>Exercício 5: comunicação de insight</h2>
+  <p class="lead">Três insights com evidência numérica e duas recomendações testáveis, sem afirmar causalidade.</p>
+
+  <details class="qa" open>
+    <summary>Três insights</summary>
+    <div class="ans">
+      <ol>
+        <li><b>O Google Ads concentra o melhor resultado.</b> Com 30,9% do investimento, entregou 43,7% das conversões e 42,9% da receita, com CPA de R$ 19,83 (geral: R$ 28,05) e ROAS de 7,56 (geral: 5,45).</li>
+        <li><b>O LinkedIn é o mais caro por conversão, mas converte com ticket alto.</b> O CPA é de R$ 58,56, 2,95 vezes o do Google, e 24,4% do investimento gerou 11,7% das conversões. Cada conversão rende em média R$ 300 de receita (Google: R$ 150), o que sustenta um ROAS de 5,12, próximo ao do Meta (5,20).</li>
+        <li><b>As conversões crescem, mas com retorno decrescente.</b> Entre 03/08 e 07/09, o investimento total subiu 44% e as conversões, 34%; o ROAS semanal caiu de 5,47 para 5,11. No LinkedIn, cada conversão adicional custou em média R$ 90 de verba extra (entre a 1ª e a última semana), contra R$ 18 no Google Ads.</li>
+      </ol>
+      <p class="note"><b>Para a regra "uma descoberta por integrante" (4 pessoas):</b> um 4º insight possível é o papel do Instagram como topo de funil. Ele tem o maior alcance (449.900, 35% do total) e o menor custo por mil impressões (R$ 7,79 contra R$ 23,71 no Google), mas o menor ROAS (2,65), então precisa ser avaliado por métricas de topo, e não só por conversão do último clique.</p>
+    </div>
+  </details>
+
+  <details class="qa" open>
+    <summary>Duas recomendações testáveis</summary>
+    <div class="ans">
+      <ol>
+        <li><b>Testar um aumento gradual de orçamento no Google Ads, com grupo de controle.</b>
+          <ul>
+            <li>Teste: elevar a verba semanal em cerca de 20% (de R$ 1.600 para R$ 1.920) por 3 semanas, mantendo os demais canais, com uma região ou parte da campanha como controle.</li>
+            <li>Hipótese: o CPA permanece abaixo de R$ 22 e o ROAS acima de 7.</li>
+            <li>Critério de parada: CPA acima de R$ 25 ou ROAS abaixo de 6.</li>
+            <li>Cuidado: como a campanha é de "Pesquisa Marca", parte das conversões pode vir de pessoas que já comprariam; o controle serve para medir o efeito incremental.</li>
+          </ul>
+        </li>
+        <li><b>Investigar o LinkedIn Ads antes de ampliar a verba, com teste A/B.</b>
+          <ul>
+            <li>Teste: dividir a campanha em duas variações (público ou criativo/formulário) com a mesma verba por 3 semanas.</li>
+            <li>Hipótese: a variação vencedora reduz o CPA para perto de R$ 45 sem derrubar a receita por conversão (hoje R$ 300).</li>
+            <li>Decisão: se o CPA não melhorar, reduzir gradualmente a verba e redirecioná-la.</li>
+          </ul>
+        </li>
+      </ol>
+    </div>
+  </details>
+</section>
+
+<!-- ============ QUESTÕES ORIENTADORAS ============ -->
+<section id="guia">
+  <h2>Questões orientadoras</h2>
+
+  <details class="qa">
+    <summary>1. Qual canal apresentou maior volume de conversões?</summary>
+    <div class="ans"><p class="short"><b>Google Ads</b>, com 416 conversões (43,7% do total de 951).</p></div>
+  </details>
+
+  <details class="qa">
+    <summary>2. Qual canal apresentou melhor taxa de conversão?</summary>
+    <div class="ans"><p class="short"><b>Google Ads</b>, com 2,20%. Meta 1,92%, LinkedIn 1,82% e Instagram 1,05%.</p></div>
+  </details>
+
+  <details class="qa">
+    <summary>3. Qual campanha apresentou melhor relação entre investimento e resultado?</summary>
+    <div class="ans">
+      <p class="short"><b>Pesquisa Marca (Google Ads)</b>: ROAS de 7,56 e CPA de R$ 19,83.</p>
+      <p>Cada canal rodou uma única campanha, então campanha e canal coincidem. O melhor registro individual foi o de 17/08/2026, com ROAS de 7,73 e CPA de R$ 19,40. Ressalva: por ser busca de marca, parte do resultado pode ser demanda já existente.</p>
+    </div>
+  </details>
+
+  <details class="qa">
+    <summary>4. Existe canal com alto investimento e baixo retorno?</summary>
+    <div class="ans">
+      <p class="short">Sim, o <b>LinkedIn Ads</b> (R$ 6.500 para 111 conversões e CPA de R$ 58,56), e o <b>Instagram</b> tem o menor ROAS (2,65), embora com o menor investimento.</p>
+      <p>Nenhum canal teve ROAS abaixo de 1, ou seja, todos devolveram mais receita do que o investido. Como não temos margem, não dá para afirmar que todos dão lucro. Veja o Exercício 3, pergunta 5, para a explicação completa.</p>
+    </div>
+  </details>
+
+  <details class="qa">
+    <summary>5. O aumento do investimento parece associado ao aumento das conversões?</summary>
+    <div class="ans">
+      <p class="short">Sim, há associação positiva (r = 0,79), mas com retorno decrescente e sem prova de causalidade.</p>
+      <p>Nas semanas observadas, o investimento subiu 44% e as conversões 34%; o ROAS caiu de 5,47 para 5,11. A associação é real nos dados, mas pode refletir tendência no tempo e decisões de orçamento tomadas pelo desempenho. Só um experimento mostra o efeito causal.</p>
+    </div>
+  </details>
+
+  <details class="qa">
+    <summary>6. Quais campanhas merecem investigação adicional?</summary>
+    <div class="ans">
+      <ul>
+        <li><b>LinkedIn, Leads B2B:</b> maior CPA e CPC; o CPA subiu de R$ 56 para R$ 64 e o ROAS caiu de 5,40 (17/08) para 4,67.</li>
+        <li><b>Instagram, Conteúdo Impulsionado:</b> menor ROAS e queda contínua desde 10/08 (2,86 para 2,40); tem também o lead ausente de 24/08.</li>
+        <li><b>Meta, Conversão Social:</b> o ROAS caiu de 5,57 (17/08) para 4,74 enquanto o investimento seguiu subindo.</li>
+        <li><b>Google, Pesquisa Marca:</b> é a melhor, mas vale checar a incrementalidade (quanto dessa receita viria de qualquer forma).</li>
+      </ul>
+    </div>
+  </details>
+
+  <details class="qa">
+    <summary>7. Que decisão poderia ser tomada?</summary>
+    <div class="ans">
+      <p class="short">Testar aumento gradual de verba no Google Ads com grupo de controle e investigar o LinkedIn antes de ampliar ou cortar, sem mudanças bruscas.</p>
+      <ul>
+        <li>Manter o Meta Ads, monitorando a queda de ROAS recente.</li>
+        <li>Tratar o Instagram como topo de funil: avaliar por alcance, custo por mil impressões e efeito em outros canais, não só pela conversão direta.</li>
+        <li>Não cortar o LinkedIn cegamente: o ticket médio é de R$ 300, o dobro do Google.</li>
+      </ul>
+    </div>
+  </details>
+
+  <details class="qa">
+    <summary>8. Quais informações adicionais seriam necessárias?</summary>
+    <div class="ans">
+      <ul>
+        <li><b>Margem e custos:</b> para trocar ROAS por lucro.</li>
+        <li><b>Novos clientes, recorrência e LTV:</b> para saber o valor de cada cliente ao longo do tempo.</li>
+        <li><b>Modelo de atribuição:</b> para saber como o crédito é dividido entre canais.</li>
+        <li><b>Público, dispositivo e criativo:</b> para explicar por que um canal rende mais que outro.</li>
+        <li><b>Série mais longa:</b> mais de 6 semanas, para separar sazonalidade de tendência.</li>
+        <li><b>Leads completos e qualificados:</b> para fechar o funil do Instagram e medir qualidade.</li>
+      </ul>
+    </div>
+  </details>
+</section>
+
+<!-- ============ DISCUSSÃO ============ -->
+<section id="discussao">
+  <h2>Discussão e fechamento</h2>
+
+  <details class="qa">
+    <summary>O canal com maior alcance deve receber mais orçamento? Por quê?</summary>
+    <div class="ans">
+      <p class="short"><b>Não automaticamente.</b> Alcance mede exposição, não resultado. Depende do objetivo da campanha.</p>
+      <ul>
+        <li>O Instagram tem o maior alcance (449.900, 35,3% do total) e o menor ROAS (2,65) e a menor taxa de conversão (1,05%).</li>
+        <li>Se o objetivo for reconhecimento de marca, o Instagram é eficiente: custa R$ 10,74 por mil pessoas alcançadas (Google: R$ 30,41; LinkedIn: R$ 39,44).</li>
+        <li>Se o objetivo for conversão, mais orçamento só por causa do alcance seria um erro.</li>
+        <li>Cuidado: somar o alcance semanal conta a mesma pessoa mais de uma vez, então o total de 449.900 não são pessoas únicas.</li>
+      </ul>
+    </div>
+  </details>
+
+  <details class="qa">
+    <summary>Como o objetivo no funil muda a leitura de CPA e ROAS?</summary>
+    <div class="ans">
+      <p class="short">Cada etapa tem um papel, então cada uma deve ser medida com a régua certa.</p>
+      <ul>
+        <li><b>Topo (Instagram):</b> o objetivo é alcance e interesse. CPA e ROAS do último clique tendem a parecer ruins (CPA R$ 37,73; ROAS 2,65) porque o canal ajuda a vender depois, em outros canais.</li>
+        <li><b>Meio (Meta, LinkedIn):</b> o objetivo é gerar leads e consideração. CPA e custo por lead importam mais, junto com a qualidade do lead.</li>
+        <li><b>Fundo (Google, Pesquisa Marca):</b> o objetivo é converter quem já conhece a marca. CPA baixo e ROAS alto são esperados, e podem incluir demanda criada por outros canais.</li>
+      </ul>
+      <p>Comparar CPA de topo com CPA de fundo é comparar coisas diferentes.</p>
+    </div>
+  </details>
+
+  <details class="qa">
+    <summary>O que perderíamos ao escolher apenas uma métrica?</summary>
+    <div class="ans">
+      <ul>
+        <li><b>Só ROAS:</b> o LinkedIn (5,12) parece quase igual ao Meta (5,20), escondendo que seu CPA é 2,4 vezes maior.</li>
+        <li><b>Só CPA:</b> o LinkedIn parece o pior, mas suas conversões valem R$ 300, o dobro das do Google.</li>
+        <li><b>Só conversões:</b> favorece quem investe mais e ignora o custo.</li>
+        <li><b>Só CTR:</b> LinkedIn (2,89%) e Meta (2,98%) parecem iguais, mas o CPC do LinkedIn é R$ 1,06 contra R$ 0,46.</li>
+        <li>O conjunto (volume, taxa, CPA, ROAS e ticket) conta a história completa.</li>
+      </ul>
+    </div>
+  </details>
+
+  <details class="qa">
+    <summary>Que vieses podem existir na atribuição de receita por canal?</summary>
+    <div class="ans">
+      <ul>
+        <li><b>Último clique:</b> dá todo o crédito ao último contato e favorece o fundo de funil (Google) em detrimento do topo (Instagram).</li>
+        <li><b>Demanda já existente:</b> a busca de marca captura gente que foi impactada por outros canais.</li>
+        <li><b>Dupla contagem:</b> cada plataforma tende a reivindicar a mesma venda.</li>
+        <li><b>Janela de atribuição:</b> prazos diferentes por plataforma alteram os números.</li>
+        <li><b>Efeitos fora da mídia paga:</b> orgânico, indicação e vendas offline não aparecem.</li>
+      </ul>
+    </div>
+  </details>
+
+  <details class="qa">
+    <summary>Que dados adicionais seriam essenciais?</summary>
+    <div class="ans">
+      <p class="short">Prioridade para <b>margem</b>, <b>LTV</b> e <b>modelo de atribuição</b>, porque são os que mais podem mudar a decisão.</p>
+      <ul>
+        <li><b>Margem:</b> um ROAS de 5 pode dar lucro ou prejuízo conforme os custos.</li>
+        <li><b>Novos clientes, recorrência e LTV:</b> um canal com CPA alto pode trazer clientes que compram mais vezes.</li>
+        <li><b>Atribuição:</b> mostra o papel do Instagram e da busca de marca na jornada.</li>
+        <li><b>Dispositivo, público e criativo:</b> orientam onde otimizar dentro de cada canal.</li>
+      </ul>
+    </div>
+  </details>
+
+  <details class="qa">
+    <summary>Que experimento poderia testar a recomendação do grupo?</summary>
+    <div class="ans">
+      <p class="short">Um teste com grupo de controle: aumentar a verba do Google Ads em parte das campanhas ou regiões e manter outra parte igual.</p>
+      <ul>
+        <li><b>Hipótese:</b> um aumento de 20% de verba mantém CPA abaixo de R$ 22 e ROAS acima de 7.</li>
+        <li><b>Métricas:</b> conversões, CPA, ROAS e receita incremental contra o controle.</li>
+        <li><b>Duração:</b> cerca de 3 semanas, mais do que o ciclo de decisão do cliente.</li>
+        <li><b>Regra de parada:</b> CPA acima de R$ 25 ou ROAS abaixo de 6.</li>
+        <li>Para o LinkedIn, um teste A/B de público ou criativo com a mesma verba.</li>
+      </ul>
+    </div>
+  </details>
+
+  <details class="qa">
+    <summary>Em que momento uma recomendação baseada em correlação se torna arriscada?</summary>
+    <div class="ans">
+      <ul>
+        <li>Quando a decisão é grande ou difícil de reverter (mudar muito a verba de uma vez).</li>
+        <li>Quando há fatores ocultos prováveis, como tendência, sazonalidade ou decisões de orçamento tomadas pelo desempenho.</li>
+        <li>Quando a amostra é pequena: aqui são 24 registros em 6 semanas.</li>
+        <li>Quando se extrapola além do que foi observado, por exemplo dobrar uma verba que variou entre R$ 650 e R$ 1.600.</li>
+        <li>Quando alguém usa a correlação para dizer "investir mais causa mais conversões".</li>
+      </ul>
+    </div>
+  </details>
+
+  <details class="qa" open>
+    <summary>Ticket de saída: "Antes de recomendar uma mudança de orçamento, eu verificaria ____, porque ____."</summary>
+    <div class="ans">
+      <div class="say">
+        <p>"Antes de recomendar uma mudança de orçamento, eu verificaria <b>se o ganho de conversões é incremental, com um teste com grupo de controle</b>, porque <b>a correlação de 0,79 entre investimento e conversões não prova causalidade e o ROAS vem caindo desde meados de agosto</b>."</p>
+      </div>
+      <p>Variação, se a pergunta for sobre dados: "eu verificaria a margem e o LTV de cada canal, porque o ROAS é receita bruta e não mostra se a venda dá lucro".</p>
+    </div>
+  </details>
+</section>
+
+<!-- ============ ENTREGA ============ -->
+<section id="entrega">
+  <h2>Perguntas sobre a entrega e o método</h2>
+  <p class="lead">Perguntas que a professora pode fazer a partir do briefing de 30/09 e do notebook.</p>
+
+  <details class="qa">
+    <summary>Quais são os três gráficos e o que cada um mostra?</summary>
+    <div class="ans">
+      <ol>
+        <li><b>Conversões por canal (barras):</b> o Google Ads lidera com 416, seguido por Meta (296), Instagram (128) e LinkedIn (111).</li>
+        <li><b>Conversões ao longo do tempo (linhas):</b> crescimento semanal em todos os canais, de 03/08 a 07/09; o investimento também subiu, então não prova melhora de desempenho.</li>
+        <li><b>Investimento × conversões (dispersão):</b> associação positiva (r = 0,79), com o Google Ads convertendo mais por real investido; não prova causalidade.</li>
+      </ol>
+      <p class="note">Divisão por integrante: combinem quem apresenta cada gráfico e cada descoberta. Com 4 pessoas e 3 gráficos, o 4º pode ser o ROAS semanal por canal, que sustenta a descoberta do retorno decrescente.</p>
+    </div>
+  </details>
+
+  <details class="qa">
+    <summary>Quais são as limitações da análise?</summary>
+    <div class="ans">
+      <ul>
+        <li><b>Base pequena:</b> 24 registros, 6 semanas, 4 canais.</li>
+        <li><b>Dado ausente:</b> um valor de <code>leads</code> do Instagram (24/08), o que subestima os leads do canal.</li>
+        <li><b>Correlação não é causalidade:</b> sem experimento, não há efeito causal.</li>
+        <li><b>Uma campanha por canal:</b> não separa efeito do canal do efeito da campanha.</li>
+        <li><b>Sem margem, LTV nem atribuição:</b> o ROAS é bruto e depende do modelo de crédito.</li>
+        <li><b>Alcance semanal não é somável:</b> repete pessoas entre semanas.</li>
+        <li><b>Tendência no tempo:</b> investimento e conversões crescem juntos, e a correlação mistura isso com o efeito real.</li>
+      </ul>
+    </div>
+  </details>
+
+  <details class="qa">
+    <summary>Qual é a conclusão do grupo (100 a 150 palavras)?</summary>
+    <div class="ans">
+      <div class="say">
+        <p>A análise das campanhas mostrou diferenças importantes no desempenho dos canais de Marketing Digital. O Google Ads apresentou o maior volume de conversões, com 416, além de um CPA de R$ 19,83 e ROAS de 7,56. O Meta Ads também apresentou resultados relevantes, enquanto o Instagram teve o menor ROAS, de 2,65. Já o LinkedIn Ads apresentou o maior CPA, de R$ 58,56, indicando um custo mais elevado por conversão. A correlação de 0,7857 entre investimento e conversões demonstrou uma associação positiva entre essas variáveis, mas não comprova uma relação de causa e efeito. Portanto, recomenda-se testar possíveis aumentos de investimento no Google Ads e investigar melhorias no LinkedIn Ads. As decisões devem considerar testes adicionais e as limitações dos dados disponíveis.</p>
+      </div>
+      <p>São cerca de 122 palavras, dentro do limite pedido.</p>
+    </div>
+  </details>
+
+  <details class="qa">
+    <summary>Como o grupo tratou dados ausentes e inconsistências?</summary>
+    <div class="ans">
+      <ul>
+        <li><b>Inconsistência:</b> "Instagram " (com espaço) foi unificado com <code>str.strip()</code>.</li>
+        <li><b>Ausência:</b> o lead faltante foi mantido como <code>NaN</code>, e não convertido em zero.</li>
+        <li><b>Data:</b> convertida para datetime com <code>pd.to_datetime</code>.</li>
+        <li><b>Duplicatas:</b> verificadas, e não há nenhuma (<code>df.duplicated().sum()</code> = 0).</li>
+      </ul>
+    </div>
+  </details>
+
+  <details class="qa">
+    <summary>A hipótese inicial foi confirmada?</summary>
+    <div class="ans">
+      <p class="short"><b>Parcialmente.</b> A hipótese era que canais com mais investimento podem gerar mais conversões.</p>
+      <ul>
+        <li>A favor: Google Ads (maior investimento, R$ 8.250) teve mais conversões, e Meta (2º em investimento) teve a 2ª posição; a correlação é de 0,79.</li>
+        <li>Contra: o LinkedIn, 3º em investimento (R$ 6.500), ficou em último em conversões (111), atrás do Instagram (128, com R$ 4.830). Mais investimento não garante mais conversões; a eficiência de cada canal pesa muito.</li>
+      </ul>
+    </div>
+  </details>
+
+  <details class="qa">
+    <summary>Por que a correlação geral (0,79) é menor do que a de cada canal (0,94 a 0,99)?</summary>
+    <div class="ans">
+      <p class="short">Porque a correlação geral mistura canais com eficiências diferentes.</p>
+      <p>Dentro de um canal, mais verba coincide com mais conversões quase em linha reta. Quando os quatro canais entram juntos, uma mesma verba produz resultados distintos (R$ 1.000 rendem 24 conversões no Instagram e 42 no Meta), o que espalha os pontos e reduz o r geral.</p>
+    </div>
+  </details>
+
+  <details class="qa">
+    <summary>Por que o notebook usa CTR, taxa de conversão, CPC, CPA e ROAS e não só os totais?</summary>
+    <div class="ans">
+      <p class="short">Totais favorecem quem investe mais. As razões permitem comparar canais de tamanhos diferentes de forma justa.</p>
+      <p>Google Ads e Instagram têm verbas bem diferentes (R$ 8.250 e R$ 4.830). Só CPA e ROAS mostram quanto cada real rende em cada canal. Cada métrica olha uma etapa: CTR (anúncio), taxa de conversão (página), CPC e CPA (custo) e ROAS (retorno).</p>
+    </div>
+  </details>
+</section>
+
+<footer>
+  <p>Fonte dos números: <code>campanhas_marketing_digital.csv</code> e o notebook <code>TRABALHO_14_10_KADIDJA.ipynb</code>, recalculados e conferidos. O ROAS usa receita bruta; sem margem, não indica lucro.</p>
+</footer>
+
+</main>
+
+<script>
+(function(){
+  var all = function(){ return Array.prototype.slice.call(document.querySelectorAll('details.qa')); };
+  document.getElementById('abrir').addEventListener('click', function(){ all().forEach(function(d){ if(!d.classList.contains('hidden')) d.open = true; }); });
+  document.getElementById('fechar').addEventListener('click', function(){ all().forEach(function(d){ d.open = false; }); });
+  var busca = document.getElementById('busca');
+  busca.addEventListener('input', function(){
+    var q = busca.value.trim().toLowerCase();
+    all().forEach(function(d){
+      var hit = !q || d.textContent.toLowerCase().indexOf(q) !== -1;
+      d.classList.toggle('hidden', !hit);
+    });
+  });
+  document.getElementById('tema').addEventListener('click', function(){
+    var root = document.documentElement;
+    var dark = root.getAttribute('data-theme') === 'dark' ||
+      (!root.getAttribute('data-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    root.setAttribute('data-theme', dark ? 'light' : 'dark');
+  });
+  window.addEventListener('beforeprint', function(){ all().forEach(function(d){ d.open = true; }); });
+})();
+</script>
+</body>
+</html>
