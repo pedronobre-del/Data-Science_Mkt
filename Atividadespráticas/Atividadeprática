@@ -1,0 +1,525 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/melllima-png/DataScienceMkt/blob/main/atividades%20pr%C3%A1ticas\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "---\n",
+        "**09/09/2026**\n",
+        "\n",
+        "### Conhecendo os Frameworks e pacotes utilizados em Ciência de Dados _ Introdução ao Python, NumPy e Pandas\n",
+        "\n",
+        "Aula prática | Instalação ambiente Python |  **[Exercício prático](https://https://integrada.minhabiblioteca.com.br/reader/books/9788521638766/epubcfi/6/26[%3Bvnd.vst.idref%3Dchapter03]!/4/38/3:7[%C3%A7%C3%B5e%2Cs%5E%3B])**\n",
+        "\n",
+        "- (Práticas com Python (Marketing Digital) https://meet.google.com/xao-oeeh-tab) Link da aula prática."
+      ],
+      "metadata": {
+        "id": "KMATHzPbFcJC"
+      }
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "5PaqWNsvEvAF"
+      },
+      "outputs": [],
+      "source": [
+        "'''\n",
+        "Meu primeiro código\n",
+        "Seu primeiro trecho de código em Python é a impressão da frase Primeiro código!.\n",
+        "Esse programa contém apenas uma linha de código, a função print(),\n",
+        "que imprime textos na tela de um dispositivo computacional, como um notebook,\n",
+        "ou em outro meio de saída, como um arquivo de texto.\n",
+        "'''\n",
+        "#Meu primeiro código\n",
+        "\n",
+        "print(\"Meu primeiro código!\")"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "'''\n",
+        "What's new in Python 3.14?\n",
+        "または Python 2.0 以降の全ての \"What's new\" ドキュメント\n",
+        "チュートリアル\n",
+        "ここから始めましょう: Python構文と機能のツアー\n",
+        "ライブラリ リファレンス\n",
+        "標準ライブラリとビルトイン\n",
+        "言語リファレンス\n",
+        "構文と言語要素\n",
+        "Pythonのセットアップと使い方\n",
+        "Pythonのインストール方法、configure方法、使い方\n",
+        "Python HOWTO\n",
+        "'''"
+      ],
+      "metadata": {
+        "id": "Oau4LVRKWA0l"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "valor_int=3 #Tipo inteiro\n",
+        "valor_float = 1.5 #Tipo ponto flutuante (float)\n",
+        "string = \"Olá, Mundo!\" #Tipo String\n",
+        "var_bool = True # Tipo Boleano\n",
+        "\n",
+        "print(type(valor_int))\n",
+        "print(type(valor_float))\n",
+        "print(type(string))\n",
+        "print(type(var_bool))"
+      ],
+      "metadata": {
+        "id": "D5ndhDMlXPAn"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "valor_int=15\n",
+        "valor_float=1.5\n",
+        "soma=valor_int + valor_float\n",
+        "print(soma)\n",
+        "print(type(soma))"
+      ],
+      "metadata": {
+        "id": "C3cn5ATHYc_I"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# Conversão de um valor do tipo inteiro para\n",
+        "# um valor do tipo string\n",
+        "a=100\n",
+        "b=str(a)\n",
+        "print(b)\n",
+        "print(type(b))"
+      ],
+      "metadata": {
+        "id": "tneNtEt2Y4yM"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "**Para quem quiser revisar os conceitos gerais da linguagem python** (estrutura de dados, operadores, listas, tuplas e dicionários) **praticar os exemplos do livro da unidade 3.**"
+      ],
+      "metadata": {
+        "id": "yz-CeIPmah6l"
+      }
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "Aula 2 - 16/09 Manipulação de Dados\n",
+        "\n",
+        "> Unidade 4 (página 73)\n",
+        "\n"
+      ],
+      "metadata": {
+        "id": "2sqMHhaua0oq"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import pandas as pd"
+      ],
+      "metadata": {
+        "id": "hkBQSCmCEm9Y"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "cidades = pd.DataFrame(\n",
+        "[\n",
+        "  ['Paraná', 'Londrina', 575377, 1356.00],\n",
+        "  ['São Paulo', 'São Carlos', 254484, 1508.00],\n",
+        "  ['Santa Catarina', 'Florianópolis', 508826, 1798.00],\n",
+        "  ['Paraná', 'Curitiba', 1963726, 2293.00],\n",
+        "  ['São Paulo', 'Campinas', 1223237, 1710.00]\n",
+        "], columns=['Estado', 'Cidade', 'Habitantes', 'Salário-Médio'])\n",
+        "cidades"
+      ],
+      "metadata": {
+        "id": "iNv5D7pvKogm"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "df=pd.read_csv(\"qualidade_vinho.csv\", sep= \",\", header=0)\n",
+        "df.head(2)"
+      ],
+      "metadata": {
+        "id": "Wh9pgKZYM6-J"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "cidades.head(2) # Retorna um novo dataframe com as n primeiras amostras"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 112
+        },
+        "id": "qG4ItwODcnVB",
+        "outputId": "aa72b8b0-d817-4fb6-a079-4c78fe9d30d1"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "      Estado      Cidade  Habitantes  Salário-Médio\n",
+              "0     Paraná    Londrina      575377         1356.0\n",
+              "1  São Paulo  São Carlos      254484         1508.0"
+            ],
+            "text/html": [
+              "\n",
+              "  <div id=\"df-309ebb64-e121-4937-ae43-f41ca49cc1f7\" class=\"colab-df-container\">\n",
+              "    <div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th></th>\n",
+              "      <th>Estado</th>\n",
+              "      <th>Cidade</th>\n",
+              "      <th>Habitantes</th>\n",
+              "      <th>Salário-Médio</th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>0</th>\n",
+              "      <td>Paraná</td>\n",
+              "      <td>Londrina</td>\n",
+              "      <td>575377</td>\n",
+              "      <td>1356.0</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>1</th>\n",
+              "      <td>São Paulo</td>\n",
+              "      <td>São Carlos</td>\n",
+              "      <td>254484</td>\n",
+              "      <td>1508.0</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "</div>\n",
+              "    <div class=\"colab-df-buttons\">\n",
+              "\n",
+              "  <div class=\"colab-df-container\">\n",
+              "    <button class=\"colab-df-convert\" onclick=\"convertToInteractive('df-309ebb64-e121-4937-ae43-f41ca49cc1f7')\"\n",
+              "            title=\"Convert this dataframe to an interactive table.\"\n",
+              "            style=\"display:none;\">\n",
+              "\n",
+              "  <svg xmlns=\"http://www.w3.org/2000/svg\" height=\"24px\" viewBox=\"0 -960 960 960\">\n",
+              "    <path d=\"M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z\"/>\n",
+              "  </svg>\n",
+              "    </button>\n",
+              "\n",
+              "  <style>\n",
+              "    .colab-df-container {\n",
+              "      display:flex;\n",
+              "      gap: 12px;\n",
+              "    }\n",
+              "\n",
+              "    .colab-df-convert {\n",
+              "      background-color: #E8F0FE;\n",
+              "      border: none;\n",
+              "      border-radius: 50%;\n",
+              "      cursor: pointer;\n",
+              "      display: none;\n",
+              "      fill: #1967D2;\n",
+              "      height: 32px;\n",
+              "      padding: 0 0 0 0;\n",
+              "      width: 32px;\n",
+              "    }\n",
+              "\n",
+              "    .colab-df-convert:hover {\n",
+              "      background-color: #E2EBFA;\n",
+              "      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);\n",
+              "      fill: #174EA6;\n",
+              "    }\n",
+              "\n",
+              "    .colab-df-buttons div {\n",
+              "      margin-bottom: 4px;\n",
+              "    }\n",
+              "\n",
+              "    [theme=dark] .colab-df-convert {\n",
+              "      background-color: #3B4455;\n",
+              "      fill: #D2E3FC;\n",
+              "    }\n",
+              "\n",
+              "    [theme=dark] .colab-df-convert:hover {\n",
+              "      background-color: #434B5C;\n",
+              "      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);\n",
+              "      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));\n",
+              "      fill: #FFFFFF;\n",
+              "    }\n",
+              "  </style>\n",
+              "\n",
+              "    <script>\n",
+              "      const buttonEl =\n",
+              "        document.querySelector('#df-309ebb64-e121-4937-ae43-f41ca49cc1f7 button.colab-df-convert');\n",
+              "      buttonEl.style.display =\n",
+              "        google.colab.kernel.accessAllowed ? 'block' : 'none';\n",
+              "\n",
+              "      async function convertToInteractive(key) {\n",
+              "        const element = document.querySelector('#df-309ebb64-e121-4937-ae43-f41ca49cc1f7');\n",
+              "        const dataTable =\n",
+              "          await google.colab.kernel.invokeFunction('convertToInteractive',\n",
+              "                                                    [key], {});\n",
+              "        if (!dataTable) return;\n",
+              "\n",
+              "        const docLinkHtml = 'Like what you see? Visit the ' +\n",
+              "          '<a target=\"_blank\" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'\n",
+              "          + ' to learn more about interactive tables.';\n",
+              "        element.innerHTML = '';\n",
+              "        dataTable['output_type'] = 'display_data';\n",
+              "        await google.colab.output.renderOutput(dataTable, element);\n",
+              "        const docLink = document.createElement('div');\n",
+              "        docLink.innerHTML = docLinkHtml;\n",
+              "        element.appendChild(docLink);\n",
+              "      }\n",
+              "    </script>\n",
+              "  </div>\n",
+              "\n",
+              "\n",
+              "    </div>\n",
+              "  </div>\n"
+            ],
+            "application/vnd.google.colaboratory.intrinsic+json": {
+              "type": "dataframe",
+              "variable_name": "cidades",
+              "summary": "{\n  \"name\": \"cidades\",\n  \"rows\": 5,\n  \"fields\": [\n    {\n      \"column\": \"Estado\",\n      \"properties\": {\n        \"dtype\": \"string\",\n        \"num_unique_values\": 3,\n        \"samples\": [\n          \"Paran\\u00e1\",\n          \"S\\u00e3o Paulo\",\n          \"Santa Catarina\"\n        ],\n        \"semantic_type\": \"\",\n        \"description\": \"\"\n      }\n    },\n    {\n      \"column\": \"Cidade\",\n      \"properties\": {\n        \"dtype\": \"string\",\n        \"num_unique_values\": 5,\n        \"samples\": [\n          \"S\\u00e3o Carlos\",\n          \"Campinas\",\n          \"Florian\\u00f3polis\"\n        ],\n        \"semantic_type\": \"\",\n        \"description\": \"\"\n      }\n    },\n    {\n      \"column\": \"Habitantes\",\n      \"properties\": {\n        \"dtype\": \"number\",\n        \"std\": 691185,\n        \"min\": 254484,\n        \"max\": 1963726,\n        \"num_unique_values\": 5,\n        \"samples\": [\n          254484,\n          1223237,\n          508826\n        ],\n        \"semantic_type\": \"\",\n        \"description\": \"\"\n      }\n    },\n    {\n      \"column\": \"Sal\\u00e1rio-M\\u00e9dio\",\n      \"properties\": {\n        \"dtype\": \"number\",\n        \"std\": 357.45908856818846,\n        \"min\": 1356.0,\n        \"max\": 2293.0,\n        \"num_unique_values\": 5,\n        \"samples\": [\n          1508.0,\n          1710.0,\n          1798.0\n        ],\n        \"semantic_type\": \"\",\n        \"description\": \"\"\n      }\n    }\n  ]\n}"
+            }
+          },
+          "metadata": {},
+          "execution_count": 10
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "cidades.head(2) # Retorna um novo dataframe com as n primeiras amostras"
+      ],
+      "metadata": {
+        "id": "nWVQMpmzcw0B",
+        "outputId": "9274c705-faf9-4aac-e866-0abcb7a2e314",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 112
+        }
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "      Estado      Cidade  Habitantes  Salário-Médio\n",
+              "0     Paraná    Londrina      575377         1356.0\n",
+              "1  São Paulo  São Carlos      254484         1508.0"
+            ],
+            "text/html": [
+              "\n",
+              "  <div id=\"df-b8a8adc8-4cd7-4c8a-8dee-b82c8a5a2dbb\" class=\"colab-df-container\">\n",
+              "    <div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th></th>\n",
+              "      <th>Estado</th>\n",
+              "      <th>Cidade</th>\n",
+              "      <th>Habitantes</th>\n",
+              "      <th>Salário-Médio</th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>0</th>\n",
+              "      <td>Paraná</td>\n",
+              "      <td>Londrina</td>\n",
+              "      <td>575377</td>\n",
+              "      <td>1356.0</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>1</th>\n",
+              "      <td>São Paulo</td>\n",
+              "      <td>São Carlos</td>\n",
+              "      <td>254484</td>\n",
+              "      <td>1508.0</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "</div>\n",
+              "    <div class=\"colab-df-buttons\">\n",
+              "\n",
+              "  <div class=\"colab-df-container\">\n",
+              "    <button class=\"colab-df-convert\" onclick=\"convertToInteractive('df-b8a8adc8-4cd7-4c8a-8dee-b82c8a5a2dbb')\"\n",
+              "            title=\"Convert this dataframe to an interactive table.\"\n",
+              "            style=\"display:none;\">\n",
+              "\n",
+              "  <svg xmlns=\"http://www.w3.org/2000/svg\" height=\"24px\" viewBox=\"0 -960 960 960\">\n",
+              "    <path d=\"M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z\"/>\n",
+              "  </svg>\n",
+              "    </button>\n",
+              "\n",
+              "  <style>\n",
+              "    .colab-df-container {\n",
+              "      display:flex;\n",
+              "      gap: 12px;\n",
+              "    }\n",
+              "\n",
+              "    .colab-df-convert {\n",
+              "      background-color: #E8F0FE;\n",
+              "      border: none;\n",
+              "      border-radius: 50%;\n",
+              "      cursor: pointer;\n",
+              "      display: none;\n",
+              "      fill: #1967D2;\n",
+              "      height: 32px;\n",
+              "      padding: 0 0 0 0;\n",
+              "      width: 32px;\n",
+              "    }\n",
+              "\n",
+              "    .colab-df-convert:hover {\n",
+              "      background-color: #E2EBFA;\n",
+              "      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);\n",
+              "      fill: #174EA6;\n",
+              "    }\n",
+              "\n",
+              "    .colab-df-buttons div {\n",
+              "      margin-bottom: 4px;\n",
+              "    }\n",
+              "\n",
+              "    [theme=dark] .colab-df-convert {\n",
+              "      background-color: #3B4455;\n",
+              "      fill: #D2E3FC;\n",
+              "    }\n",
+              "\n",
+              "    [theme=dark] .colab-df-convert:hover {\n",
+              "      background-color: #434B5C;\n",
+              "      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);\n",
+              "      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));\n",
+              "      fill: #FFFFFF;\n",
+              "    }\n",
+              "  </style>\n",
+              "\n",
+              "    <script>\n",
+              "      const buttonEl =\n",
+              "        document.querySelector('#df-b8a8adc8-4cd7-4c8a-8dee-b82c8a5a2dbb button.colab-df-convert');\n",
+              "      buttonEl.style.display =\n",
+              "        google.colab.kernel.accessAllowed ? 'block' : 'none';\n",
+              "\n",
+              "      async function convertToInteractive(key) {\n",
+              "        const element = document.querySelector('#df-b8a8adc8-4cd7-4c8a-8dee-b82c8a5a2dbb');\n",
+              "        const dataTable =\n",
+              "          await google.colab.kernel.invokeFunction('convertToInteractive',\n",
+              "                                                    [key], {});\n",
+              "        if (!dataTable) return;\n",
+              "\n",
+              "        const docLinkHtml = 'Like what you see? Visit the ' +\n",
+              "          '<a target=\"_blank\" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'\n",
+              "          + ' to learn more about interactive tables.';\n",
+              "        element.innerHTML = '';\n",
+              "        dataTable['output_type'] = 'display_data';\n",
+              "        await google.colab.output.renderOutput(dataTable, element);\n",
+              "        const docLink = document.createElement('div');\n",
+              "        docLink.innerHTML = docLinkHtml;\n",
+              "        element.appendChild(docLink);\n",
+              "      }\n",
+              "    </script>\n",
+              "  </div>\n",
+              "\n",
+              "\n",
+              "    </div>\n",
+              "  </div>\n"
+            ],
+            "application/vnd.google.colaboratory.intrinsic+json": {
+              "type": "dataframe",
+              "variable_name": "cidades",
+              "summary": "{\n  \"name\": \"cidades\",\n  \"rows\": 5,\n  \"fields\": [\n    {\n      \"column\": \"Estado\",\n      \"properties\": {\n        \"dtype\": \"string\",\n        \"num_unique_values\": 3,\n        \"samples\": [\n          \"Paran\\u00e1\",\n          \"S\\u00e3o Paulo\",\n          \"Santa Catarina\"\n        ],\n        \"semantic_type\": \"\",\n        \"description\": \"\"\n      }\n    },\n    {\n      \"column\": \"Cidade\",\n      \"properties\": {\n        \"dtype\": \"string\",\n        \"num_unique_values\": 5,\n        \"samples\": [\n          \"S\\u00e3o Carlos\",\n          \"Campinas\",\n          \"Florian\\u00f3polis\"\n        ],\n        \"semantic_type\": \"\",\n        \"description\": \"\"\n      }\n    },\n    {\n      \"column\": \"Habitantes\",\n      \"properties\": {\n        \"dtype\": \"number\",\n        \"std\": 691185,\n        \"min\": 254484,\n        \"max\": 1963726,\n        \"num_unique_values\": 5,\n        \"samples\": [\n          254484,\n          1223237,\n          508826\n        ],\n        \"semantic_type\": \"\",\n        \"description\": \"\"\n      }\n    },\n    {\n      \"column\": \"Sal\\u00e1rio-M\\u00e9dio\",\n      \"properties\": {\n        \"dtype\": \"number\",\n        \"std\": 357.45908856818846,\n        \"min\": 1356.0,\n        \"max\": 2293.0,\n        \"num_unique_values\": 5,\n        \"samples\": [\n          1508.0,\n          1710.0,\n          1798.0\n        ],\n        \"semantic_type\": \"\",\n        \"description\": \"\"\n      }\n    }\n  ]\n}"
+            }
+          },
+          "metadata": {},
+          "execution_count": 11
+        }
+      ]
+    }
+  ]
+}
