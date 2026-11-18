@@ -1,0 +1,523 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pizza à Bessa — Pitch CRISP-DM</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --orange:#F26B21;      /* cor da marca: preenchimentos e fundos */
+  --orange-ink:#CC4F0B;  /* laranja para texto grande sobre fundo claro (contraste >= 3:1) */
+  --ink:#1E1611;
+  --muted:#6B6058;
+  --cream:#FBF6EF;
+  --tint:#FCE7DA;
+  --line:#E9DFD3;
+  --gray:#BDB2A8;
+  --char:#3A2D24;
+  --font:'Plus Jakarta Sans',system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:#17100B;overflow:hidden;font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased}
+#stage{position:absolute;left:50%;top:50%;width:1920px;height:1080px;transform:translate(-50%,-50%) scale(var(--s,1));transform-origin:center center}
+
+/* ---------- slide base ---------- */
+.slide{position:absolute;inset:0;padding:84px 112px 110px;background:var(--cream);opacity:0;visibility:hidden;
+  transition:opacity .45s ease,visibility 0s .45s;display:flex;flex-direction:column;overflow:hidden}
+.slide.on{opacity:1;visibility:visible;transition:opacity .45s ease}
+.slide.orange{background:var(--orange)}
+.slide.dark{background:var(--ink);color:var(--cream)}
+
+.top{display:flex;align-items:center;gap:26px;min-height:46px}
+.phases{display:flex;align-items:center;gap:10px}
+.phases b{font-size:22px;font-weight:700;letter-spacing:.14em;color:var(--muted);margin-right:10px;text-transform:uppercase}
+.phases i{width:44px;height:44px;border-radius:50%;border:2px solid var(--gray);display:grid;place-items:center;
+  font:700 21px/1 var(--font);font-style:normal;color:var(--muted)}
+.phases i.act{background:var(--orange);border-color:var(--orange);color:var(--ink)}
+.pill{display:inline-block;background:var(--ink);color:var(--cream);font-weight:700;font-size:22px;letter-spacing:.14em;
+  text-transform:uppercase;padding:11px 24px;border-radius:999px}
+.kicker{font-size:26px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--orange-ink)}
+h1,h2{font-weight:800;letter-spacing:-.025em}
+h2{font-size:84px;line-height:1.05;max-width:1640px;margin-top:26px}
+h2 em{font-style:normal;color:var(--orange-ink)}
+.content{margin-top:54px;flex:1;display:flex;flex-direction:column}
+.lead{font-size:36px;line-height:1.35;color:var(--muted);font-weight:500;max-width:1300px}
+.lead strong{color:var(--ink);font-weight:700}
+
+.foot{position:absolute;left:112px;right:112px;bottom:44px;display:flex;justify-content:space-between;align-items:center;
+  font-size:22px;font-weight:600;color:var(--muted);letter-spacing:.02em}
+.orange .foot,.orange .foot *{color:var(--ink)}
+.dark .foot{color:#9C9086}
+.src{font-size:24px;color:var(--muted);font-weight:500;margin-top:auto}
+.content.mid>:first-child{margin-block:auto}
+
+.card{background:#fff;border:2px solid var(--line);border-radius:28px;padding:38px 42px}
+.card h3{font-size:34px;font-weight:800;letter-spacing:-.01em;line-height:1.15}
+.card p,.card li{font-size:30px;line-height:1.38;color:var(--muted);font-weight:500}
+.card p strong,.card li strong{color:var(--ink);font-weight:700}
+.tag{display:inline-block;font-size:22px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:8px 18px;border-radius:999px}
+.tag.ok{background:var(--orange);color:var(--ink)}
+.tag.maybe{background:transparent;border:2px solid var(--gray);color:var(--muted)}
+
+/* ---------- barras ---------- */
+.barrow{display:grid;grid-template-columns:var(--lab,330px) 1fr var(--val,230px);align-items:center;gap:28px}
+.barrow .lab{font-size:32px;font-weight:700;line-height:1.2}
+.barrow .val{font-size:56px;font-weight:800;letter-spacing:-.02em;white-space:nowrap}
+.track{height:64px}
+.bar{height:100%;width:0;border-radius:14px;background:var(--orange);transition:width 1.1s cubic-bezier(.2,.7,.2,1) .35s}
+.on .bar{width:var(--w)}
+.bar.dk{background:var(--char)} .bar.gr{background:var(--gray)}
+
+/* ---------- capa / obrigado ---------- */
+.deco{position:absolute;right:-300px;top:50%;width:1180px;height:1180px;transform:translateY(-50%);pointer-events:none}
+.cover h1{font-size:216px;line-height:.95;color:#fff;margin-top:70px;letter-spacing:-.035em}
+.cover .sub{font-size:44px;font-weight:600;line-height:1.28;max-width:1050px;margin-top:38px}
+.team{list-style:none;display:grid;grid-template-columns:repeat(3,auto);gap:14px 64px;margin-top:auto;width:max-content}
+.team li{font-size:34px;font-weight:800}
+.prof{font-size:28px;font-weight:600;margin-top:34px}
+.bye h1{font-size:340px;line-height:.95;color:#fff;letter-spacing:-.04em;margin-top:auto}
+.bye .ask{font-size:60px;font-weight:800;margin-top:34px}
+.bye .names{font-size:30px;font-weight:700;margin-top:26px;line-height:1.5}
+
+/* ---------- helpers ---------- */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:44px}
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:36px}
+.five{display:grid;grid-template-columns:repeat(5,1fr);gap:24px}
+.big{font-size:118px;font-weight:800;letter-spacing:-.03em;line-height:1}
+.big.o{color:var(--orange-ink)}
+.small-cap{font-size:24px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.nav{position:absolute;right:112px;bottom:30px;display:flex;gap:10px;z-index:5}
+.nav button{width:50px;height:50px;border-radius:50%;border:2px solid var(--gray);background:transparent;color:var(--muted);font:700 26px/1 var(--font);cursor:pointer;opacity:.7}
+.nav button:hover{opacity:1;border-color:var(--orange)}
+.orange .nav button{border-color:var(--ink);color:var(--ink)}
+.progress{position:absolute;left:0;bottom:0;height:8px;background:var(--orange);width:0;transition:width .4s ease;z-index:6}
+.orange ~ .progress{background:var(--ink)}
+
+@media (prefers-reduced-motion:reduce){.slide,.slide.on{transition:none}.bar{transition:none}}
+.qa .slide,.qa .bar{transition:none!important}
+.qa .bar{width:var(--w)}
+.qa .nav,.qa .progress{display:none}
+
+@media print{
+  @page{size:1920px 1080px;margin:0}
+  html,body{height:auto;overflow:visible;background:#fff}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  #stage{position:static;transform:none;width:1920px;height:auto}
+  .slide{position:relative;inset:auto;opacity:1;visibility:visible;width:1920px;height:1080px;page-break-after:always;break-after:page;transition:none}
+  .bar{width:var(--w)!important;transition:none}
+  .nav,.progress{display:none}
+}
+</style>
+</head>
+<body>
+<div id="stage">
+
+<!-- 1 · CAPA -->
+<section class="slide orange cover" aria-label="Capa">
+  <svg class="deco" viewBox="0 0 1000 1000" aria-hidden="true">
+    <circle cx="500" cy="500" r="470" fill="none" stroke="#fff" stroke-opacity=".38" stroke-width="3"/>
+    <circle cx="500" cy="500" r="395" fill="none" stroke="#fff" stroke-opacity=".22" stroke-width="2"/>
+    <g stroke="#fff" stroke-opacity=".28" stroke-width="2">
+      <line x1="500" y1="500" x2="970" y2="500"/><line x1="500" y1="500" x2="832" y2="832"/>
+      <line x1="500" y1="500" x2="500" y2="970"/><line x1="500" y1="500" x2="168" y2="832"/>
+      <line x1="500" y1="500" x2="30" y2="500"/><line x1="500" y1="500" x2="168" y2="168"/>
+      <line x1="500" y1="500" x2="500" y2="30"/><line x1="500" y1="500" x2="832" y2="168"/>
+    </g>
+    <g fill="#fff" fill-opacity=".18">
+      <circle cx="690" cy="330" r="36"/><circle cx="300" cy="360" r="30"/><circle cx="640" cy="690" r="34"/>
+      <circle cx="350" cy="660" r="28"/><circle cx="520" cy="250" r="24"/><circle cx="760" cy="520" r="26"/>
+    </g>
+  </svg>
+  <div class="top"><span class="kicker" style="color:var(--ink)">Ciência de Dados aplicada ao Marketing Digital · CEUB</span></div>
+  <h1>Pizza à Bessa</h1>
+  <p class="sub">O que faz um Reel render mais visualizações, e como transformar isso em campanha.</p>
+  <ul class="team">
+    <li>Pedro Nobre</li><li>Mell Lima</li><li>Daniel Câmara</li>
+    <li>Rodrigo Avelar</li><li>Pedro Lucas</li><li>Nicolas Balzon</li>
+  </ul>
+  <p class="prof">Profa. Kadidja Valéria Reginaldo de Oliveira · Novembro de 2026</p>
+</section>
+
+<!-- 3 · PROBLEMA -->
+<section class="slide" aria-label="Problema">
+  <div class="top"><nav class="phases" data-on="1"></nav><span class="kicker">O problema</span></div>
+  <h2>A Bessa viraliza. A Valentina tem rotina.</h2>
+  <div class="content">
+    <div style="display:grid;grid-template-columns:600px 1fr 1fr;row-gap:0;align-items:center">
+      <div></div>
+      <div class="small-cap" style="display:flex;align-items:center;gap:14px"><span style="width:22px;height:22px;border-radius:50%;background:var(--orange)"></span>Pizza à Bessa</div>
+      <div class="small-cap" style="display:flex;align-items:center;gap:14px"><span style="width:22px;height:22px;border-radius:50%;background:var(--char)"></span>Valentina</div>
+
+      <div style="font-size:32px;font-weight:700;padding:26px 0;border-top:2px solid var(--line)">Visualizações do Reel típico</div>
+      <div class="big o" style="font-size:84px;border-top:2px solid var(--line);padding:18px 0">70,7 mil</div>
+      <div class="big" style="font-size:84px;border-top:2px solid var(--line);padding:18px 0;color:var(--char)">2,3 mil</div>
+
+      <div style="font-size:32px;font-weight:700;padding:26px 0;border-top:2px solid var(--line)">Anúncios ativos</div>
+      <div class="big o" style="font-size:84px;border-top:2px solid var(--line);padding:18px 0">4</div>
+      <div class="big" style="font-size:84px;border-top:2px solid var(--line);padding:18px 0;color:var(--char)">22</div>
+
+      <div style="font-size:32px;font-weight:700;padding:26px 0;border-top:2px solid var(--line)">Posts por mês no feed</div>
+      <div class="big o" style="font-size:84px;border-top:2px solid var(--line);padding:18px 0">2</div>
+      <div class="big" style="font-size:84px;border-top:2px solid var(--line);padding:18px 0;color:var(--char)">4</div>
+
+      <div style="font-size:32px;font-weight:700;padding:26px 0;border-top:2px solid var(--line);border-bottom:2px solid var(--line)">Anúncio mais antigo no ar</div>
+      <div class="big o" style="font-size:84px;border-top:2px solid var(--line);border-bottom:2px solid var(--line);padding:18px 0">119 dias</div>
+      <div class="big" style="font-size:84px;border-top:2px solid var(--line);border-bottom:2px solid var(--line);padding:18px 0;color:var(--char)">656 dias</div>
+    </div>
+    <p class="src">O alcance orgânico é da Bessa. A presença paga e a frequência são da Valentina. Fonte: prints do Instagram, Biblioteca de Anúncios do Meta e estudo de caso do grupo, nov/2026.</p>
+  </div>
+</section>
+
+<!-- 4 · OBJETIVO -->
+<section class="slide" aria-label="Objetivo">
+  <div class="top"><nav class="phases" data-on="1"></nav><span class="kicker">Fase 1 · Compreensão do negócio</span></div>
+  <h2>Descobrir o que faz um Reel render, com dados públicos.</h2>
+  <div class="content">
+    <div class="two" style="grid-template-columns:1fr 1.15fr;gap:64px;align-items:start">
+      <div>
+        <div class="small-cap">Objetivo</div>
+        <p class="lead" style="margin-top:18px">Achar quais características de um Reel estão ligadas a mais visualizações e usá-las para planejar <strong>conteúdo e anúncios</strong>.</p>
+      </div>
+      <div>
+        <div class="small-cap">Como saberemos que deu certo</div>
+        <ol style="list-style:none;margin-top:18px;display:grid;gap:18px">
+          <li class="card" style="padding:26px 34px;display:flex;gap:26px;align-items:center"><span class="big o" style="font-size:64px">1</span><p style="color:var(--ink);font-weight:600">Achar fatores de conteúdo ligados às visualizações</p></li>
+          <li class="card" style="padding:26px 34px;display:flex;gap:26px;align-items:center"><span class="big o" style="font-size:64px">2</span><p style="color:var(--ink);font-weight:600">Ter um modelo que erre menos que o chute na média</p></li>
+          <li class="card" style="padding:26px 34px;display:flex;gap:26px;align-items:center"><span class="big o" style="font-size:64px">3</span><p style="color:var(--ink);font-weight:600">Propor uma campanha testável, com indicador e cuidado com dados</p></li>
+        </ol>
+      </div>
+    </div>
+    <p class="src">Limite assumido: sem vendas, gasto em anúncios nem seguidores. Por isso não calculamos ROI.</p>
+  </div>
+</section>
+
+<!-- 5 · DADOS -->
+<section class="slide" aria-label="Dados">
+  <div class="top"><nav class="phases" data-on="2"></nav><span class="kicker">Fase 2 · Compreensão dos dados</span></div>
+  <h2>58 Reels, 2 marcas, 4 fontes públicas.</h2>
+  <div class="content">
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:28px">
+      <div class="card"><div class="small-cap">Instagram</div><div class="big o" style="font-size:96px;margin:22px 0 14px">58</div><p>Reels com visualizações: <strong>35 Bessa</strong> e <strong>23 Valentina</strong></p></div>
+      <div class="card"><div class="small-cap">Biblioteca de Anúncios</div><div class="big o" style="font-size:96px;margin:22px 0 14px">4 × 22</div><p>Anúncios ativos da <strong>Bessa</strong> contra a <strong>Valentina</strong></p></div>
+      <div class="card"><div class="small-cap">Google Trends · DF 2026</div><div class="big o" style="font-size:96px;margin:22px 0 14px">81</div><p>Interesse por “pizza”. A marca “pizza bessa” fica em <strong>14</strong></p></div>
+      <div class="card"><div class="small-cap">Google Maps</div><div class="big o" style="font-size:96px;margin:22px 0 14px">4,4</div><p>Nota da Bessa em <strong>5.561</strong> avaliações</p></div>
+    </div>
+    <p class="src">Limites: amostra pequena, sem seguidores, sem datas dos posts e sem dados de quem assistiu. Consultas do grupo em nov/2026.</p>
+  </div>
+</section>
+
+<!-- 6 · DESCOBERTA -->
+<section class="slide" aria-label="Descoberta">
+  <div class="top"><nav class="phases" data-on="2"></nav><span class="kicker">Fase 2 · Primeira descoberta</span></div>
+  <h2>O Reel típico da Bessa alcança <em>30x</em> mais gente.</h2>
+  <div class="content" style="justify-content:center;gap:34px">
+    <div class="barrow" style="--lab:300px;--val:260px"><div class="lab">Pizza à Bessa</div><div class="track"><div class="bar" style="--w:100%"></div></div><div class="val" style="color:var(--orange-ink)">70,7 mil</div></div>
+    <div class="barrow" style="--lab:300px;--val:260px"><div class="lab">Valentina</div><div class="track"><div class="bar dk" style="--w:3.3%"></div></div><div class="val" style="color:var(--char)">2,3 mil</div></div>
+    <p class="lead" style="margin-top:34px;font-size:32px">Reel típico é a <strong>mediana</strong>: metade dos Reels tem mais visualizações, metade tem menos. O problema da Bessa não é alcance. É rotina.</p>
+  </div>
+</section>
+
+<!-- 7 · PREPARAÇÃO + MODELAGEM -->
+<section class="slide" aria-label="Preparação e modelagem">
+  <div class="top"><nav class="phases" data-on="3,4"></nav><span class="kicker">Fases 3 e 4 · Preparação e modelagem</span></div>
+  <h2>O modelo simples erra <em>metade</em> do chute.</h2>
+  <div class="content mid">
+    <div class="two" style="grid-template-columns:.9fr 1.1fr;gap:70px;align-items:start">
+      <div>
+        <div class="small-cap">Cada Reel vira 4 perguntas de sim ou não</div>
+        <ul style="list-style:none;margin-top:22px;display:grid;gap:16px">
+          <li class="card" style="padding:20px 30px"><p style="color:var(--ink);font-weight:700">É da Bessa?</p></li>
+          <li class="card" style="padding:20px 30px"><p style="color:var(--ink);font-weight:700">Anuncia um sabor novo?</p></li>
+          <li class="card" style="padding:20px 30px"><p style="color:var(--ink);font-weight:700">Tem Paulo Bessa ou influenciador?</p></li>
+          <li class="card" style="padding:20px 30px"><p style="color:var(--ink);font-weight:700">Mostra o ambiente do salão?</p></li>
+        </ul>
+        <p class="src" style="margin-top:24px">Sem nomes de usuários nem dados pessoais.</p>
+      </div>
+      <div>
+        <div class="small-cap">Quanto cada método erra (menor é melhor)</div>
+        <div style="display:grid;gap:30px;margin-top:30px">
+          <div class="barrow" style="--lab:270px;--val:150px"><div class="lab">Chutar a média</div><div class="track"><div class="bar gr" style="--w:84.6%"></div></div><div class="val" style="font-size:48px">5,5x</div></div>
+          <div class="barrow" style="--lab:270px;--val:150px"><div class="lab">Regressão linear</div><div class="track"><div class="bar" style="--w:43%"></div></div><div class="val" style="font-size:48px;color:var(--orange-ink)">2,8x</div></div>
+          <div class="barrow" style="--lab:270px;--val:150px"><div class="lab">Random Forest</div><div class="track"><div class="bar dk" style="--w:47.7%"></div></div><div class="val" style="font-size:48px">3,1x</div></div>
+        </div>
+        <p class="src" style="margin-top:34px">Testado em Reels que o modelo nunca viu. Ficamos com o mais simples.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 8 · RESULTADO -->
+<section class="slide" aria-label="Resultado">
+  <div class="top"><nav class="phases" data-on="5"></nav><span class="kicker">Fase 5 · Avaliação</span></div>
+  <h2>Novo sabor é o que mais pesa: <em>~7x</em> mais visualizações.</h2>
+  <div class="content mid">
+    <div class="two" style="grid-template-columns:1.35fr .65fr;gap:64px;align-items:start">
+      <div style="display:grid;gap:30px">
+        <div class="barrow" style="--lab:360px;--val:120px"><div class="lab">Reel de novo sabor</div><div class="track"><div class="bar" style="--w:92%"></div></div><div class="val" style="font-size:48px;color:var(--orange-ink)">6,9x</div></div>
+        <div class="barrow" style="--lab:360px;--val:120px"><div class="lab">Paulo Bessa ou influenciador</div><div class="track"><div class="bar gr" style="--w:29.3%"></div></div><div class="val" style="font-size:48px">2,2x</div></div>
+        <div class="barrow" style="--lab:360px;--val:120px"><div class="lab">Mostra o ambiente</div><div class="track"><div class="bar gr" style="--w:25.3%"></div></div><div class="val" style="font-size:48px">1,9x</div></div>
+        <div style="display:flex;gap:18px;margin-top:6px"><span class="tag ok">Confirmado</span><span class="tag maybe">Indício</span></div>
+      </div>
+      <div class="card" style="padding:40px">
+        <div class="small-cap">Reel típico da Bessa</div>
+        <div style="margin-top:20px"><div class="big o" style="font-size:96px">254 mil</div><p style="margin-top:6px">com novo sabor</p></div>
+        <div style="margin-top:26px"><div class="big" style="font-size:96px;color:var(--char)">57,5 mil</div><p style="margin-top:6px">nos demais Reels</p></div>
+      </div>
+    </div>
+    <p class="src">“Ser da Bessa” (~10x) mistura conteúdo com tamanho da audiência: não prova que o conteúdo seja melhor.</p>
+  </div>
+</section>
+
+<!-- 9 · O QUE NÃO PROVAMOS -->
+<section class="slide" aria-label="Limites">
+  <div class="top"><nav class="phases" data-on="5"></nav><span class="kicker">Fase 5 · Honestidade da análise</span></div>
+  <h2>O que os dados <em>não</em> provam.</h2>
+  <div class="content mid">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:28px">
+      <div class="card"><h3>Datas especiais rendem mais?</h3><p style="margin-top:12px">A amostra não confirma. Copa e Natal foram bem, Dia dos Namorados não.</p></div>
+      <div class="card"><h3>Influenciador funciona?</h3><p style="margin-top:12px">Inconsistente: um Reel de 637 mil, mas outros de 8 mil e 31 mil.</p></div>
+      <div class="card"><h3>Qual é o ROI?</h3><p style="margin-top:12px">Sem gasto e sem vendas, não calculamos. Anúncio de 656 dias é indício, não prova.</p></div>
+      <div class="card"><h3>É causa?</h3><p style="margin-top:12px">São associações. Por isso a campanha vem com teste A/B.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- DECISÃO -->
+<section class="slide" aria-label="A decisão">
+  <div class="top"><nav class="phases" data-on="6"></nav><span class="kicker">A decisão</span></div>
+  <h2 style="font-size:104px;margin-top:70px;max-width:1600px">Todo mês, um Reel de <em>sabor novo</em> com Paulo Bessa, impulsionado como anúncio.</h2>
+  <div class="content" style="justify-content:flex-end">
+    <p class="lead" style="max-width:1400px">Porque Reels de novo sabor têm cerca de <strong>7x mais visualizações</strong>: é o fator de conteúdo que os dados confirmam.</p>
+  </div>
+</section>
+
+<!-- 10 · CAMPANHA -->
+<section class="slide" aria-label="Campanha">
+  <div class="top"><nav class="phases" data-on="6"></nav><span class="kicker">Fase 6 · Implantação</span></div>
+  <h2>Campanha: <em>Sabor novo do mês</em>.</h2>
+  <div class="content">
+    <div class="five">
+      <div class="card" style="padding:32px 28px"><div class="small-cap" style="color:var(--orange-ink)">Gatilho</div><p style="margin-top:14px;color:var(--ink);font-weight:600">Um sabor novo por mês</p></div>
+      <div class="card" style="padding:32px 28px"><div class="small-cap" style="color:var(--orange-ink)">Público</div><p style="margin-top:14px;color:var(--ink);font-weight:600">Quem interagiu com o Instagram da Bessa nos últimos 30 dias, em Brasília</p></div>
+      <div class="card" style="padding:32px 28px"><div class="small-cap" style="color:var(--orange-ink)">Canal</div><p style="margin-top:14px;color:var(--ink);font-weight:600">Reel patrocinado no Instagram e Facebook, com botão de WhatsApp</p></div>
+      <div class="card" style="padding:32px 28px"><div class="small-cap" style="color:var(--orange-ink)">Ação</div><p style="margin-top:14px;color:var(--ink);font-weight:600">Paulo Bessa provando o sabor, por 7 dias, no lugar de um anúncio parado</p></div>
+      <div class="card" style="padding:32px 28px"><div class="small-cap" style="color:var(--orange-ink)">Indicador</div><p style="margin-top:14px;color:var(--ink);font-weight:600">Custo por contato (WhatsApp ou ligação)</p></div>
+    </div>
+    <p class="lead" style="margin-top:44px;font-size:32px">Cuidado com os dados (LGPD): só públicos de engajamento da plataforma, frequência limitada e <strong>nenhum dado pessoal coletado</strong>.</p>
+  </div>
+</section>
+
+<!-- 11 · TESTAR E MEDIR -->
+<section class="slide" aria-label="Testar e medir">
+  <div class="top"><nav class="phases" data-on="6"></nav><span class="kicker">Fase 6 · Como testar e medir</span></div>
+  <h2>Um teste justo e métricas que a pizzaria preenche.</h2>
+  <div class="content">
+    <div class="two" style="gap:36px">
+      <div class="card"><h3>Teste A/B: com Paulo × sem Paulo</h3>
+        <ul style="list-style:none;margin-top:16px;display:grid;gap:8px">
+          <li>Mesmo sabor, mesma verba, mesmo período</li><li>Público dividido ao acaso</li><li>Só uma coisa muda</li><li>Pelo menos 7 dias</li>
+        </ul></div>
+      <div class="card"><h3>Métricas de negócio</h3>
+        <ul style="list-style:none;margin-top:16px;display:grid;gap:8px">
+          <li><strong>CAC</strong> = gasto ÷ novos clientes</li><li><strong>LTV</strong> = margem mensal × meses</li><li><strong>ROI</strong> = (margem extra − investimento) ÷ investimento</li>
+        </ul>
+        <p style="margin-top:12px;font-size:26px">Sem os dados da pizzaria, não inventamos números.</p></div>
+    </div>
+    <div style="margin-top:34px;display:grid;grid-template-columns:repeat(6,1fr);gap:0;border-top:2px solid var(--line);padding-top:18px">
+      <div><div class="small-cap" style="color:var(--orange-ink)">Nov</div><p style="font-size:26px;color:var(--ink);font-weight:600;margin-top:6px">Black Friday</p></div>
+      <div><div class="small-cap" style="color:var(--orange-ink)">Dez</div><p style="font-size:26px;color:var(--ink);font-weight:600;margin-top:6px">Natal</p></div>
+      <div><div class="small-cap" style="color:var(--orange-ink)">Jan</div><p style="font-size:26px;color:var(--ink);font-weight:600;margin-top:6px">Férias escolares</p></div>
+      <div><div class="small-cap" style="color:var(--orange-ink)">Fev</div><p style="font-size:26px;color:var(--ink);font-weight:600;margin-top:6px">Carnaval</p></div>
+      <div><div class="small-cap" style="color:var(--orange-ink)">Mar</div><p style="font-size:26px;color:var(--ink);font-weight:600;margin-top:6px">Páscoa</p></div>
+      <div><div class="small-cap" style="color:var(--orange-ink)">Abr</div><p style="font-size:26px;color:var(--ink);font-weight:600;margin-top:6px">Aniversário de Brasília</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 12 · IMPACTO · NECESSIDADE -->
+<section class="slide" aria-label="Impacto: necessidade">
+  <div class="top"><span class="pill">Impacto social</span><span class="kicker">Inovação na estratégia de Marketing Digital</span></div>
+  <h2>Necessidade social: <em>acesso à informação</em>, com acessibilidade.</h2>
+  <div class="content mid">
+    <div class="two" style="gap:40px;align-items:stretch">
+      <div class="card">
+        <div class="small-cap">O que observamos</div>
+        <ul style="list-style:none;margin-top:18px;display:grid;gap:14px">
+          <li>Marca em <strong>5 ou mais perfis</strong>, stories desatualizados, perfil sem verificação</li>
+          <li>Interesse por “pizza”: <strong>81</strong>. Pela marca “pizza bessa”: <strong>14</strong>. O público descobre pelas redes, não pelo nome</li>
+        </ul>
+      </div>
+      <div style="display:grid;gap:22px">
+        <div class="card" style="border-color:var(--orange)"><h3><span style="color:var(--orange-ink)">1</span> Comunidade e relacionamento, com o dono como porta-voz</h3><p style="margin-top:10px">Paulo Bessa aparece em 4 dos 10 Reels mais vistos. Salão para 500 pessoas e área kids.</p></div>
+        <div class="card" style="border-color:var(--orange)"><h3><span style="color:var(--orange-ink)">2</span> Prova social e avaliações</h3><p style="margin-top:10px">Nota 4,4 em 5.561 avaliações. Tempo de espera baixo é ponto forte.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 13 · IMPACTO · PÚBLICOS -->
+<section class="slide" aria-label="Impacto: públicos">
+  <div class="top"><span class="pill">Impacto social</span><span class="kicker">Públicos, benefícios e riscos</span></div>
+  <h2 style="font-size:76px">Quem ganha, quem pode ficar de fora e como proteger.</h2>
+  <div class="content mid" style="margin-top:44px">
+    <div class="three">
+      <div class="card" style="padding:32px 34px"><h3>Clientes e famílias de Brasília</h3>
+        <p style="margin-top:14px;font-size:32px"><strong>Benefício:</strong> informação clara e resposta ágil</p>
+        <p style="margin-top:10px;font-size:32px"><strong>Risco:</strong> decidir por avaliação incentivada ou publi sem aviso</p>
+        <p style="margin-top:10px;font-size:32px"><strong>Medida:</strong> #publi, nenhum brinde por avaliação, responder as negativas</p></div>
+      <div class="card" style="padding:32px 34px"><h3>Quem tem barreiras de acesso</h3>
+        <p style="margin-top:14px;font-size:32px"><strong>Benefício:</strong> texto na tela e instrução de reserva no próprio Reel</p>
+        <p style="margin-top:10px;font-size:32px"><strong>Risco:</strong> ficar de fora se a informação ficar só no vídeo falado ou só no Instagram</p>
+        <p style="margin-top:10px;font-size:32px"><strong>Medida:</strong> texto em todo Reel de sabor novo; telefone e WhatsApp sempre à vista</p></div>
+      <div class="card" style="padding:32px 34px"><h3>Equipe da pizzaria</h3>
+        <p style="margin-top:14px;font-size:32px"><strong>Benefício:</strong> reconhecimento do trabalho</p>
+        <p style="margin-top:10px;font-size:32px"><strong>Risco:</strong> exposição de imagem e de dados pessoais</p>
+        <p style="margin-top:10px;font-size:32px"><strong>Medida:</strong> autorização de imagem; dúvidas individuais só no WhatsApp</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 14 · IMPACTO · INDICADORES -->
+<section class="slide" aria-label="Impacto: indicadores">
+  <div class="top"><span class="pill">Impacto social</span><span class="kicker">Indicadores e validação</span></div>
+  <h2 style="font-size:76px">Medimos mudança para o público, não só visualizações.</h2>
+  <div class="content" style="margin-top:40px">
+    <div style="display:grid;gap:14px">
+      <div class="card" style="padding:20px 32px;display:grid;grid-template-columns:230px 1fr 500px;gap:26px;align-items:center"><span class="small-cap" style="color:var(--orange-ink)">Acesso</span><p style="color:var(--ink);font-weight:600;font-size:28px">Reels de sabor novo com texto na tela e instrução de reserva</p><p style="font-size:26px">Hoje 51% têm texto na tela → meta 100%</p></div>
+      <div class="card" style="padding:20px 32px;display:grid;grid-template-columns:230px 1fr 500px;gap:26px;align-items:center;border-color:var(--orange)"><span class="small-cap" style="color:var(--orange-ink)">Compreensão</span><p style="color:var(--ink);font-weight:600;font-size:28px">Mini-teste de 2 perguntas: qual é o sabor? como reservo?</p><p style="font-size:26px">Medir no Reel atual → melhorar no revisado</p></div>
+      <div class="card" style="padding:20px 32px;display:grid;grid-template-columns:230px 1fr 500px;gap:26px;align-items:center;border-color:var(--orange)"><span class="small-cap" style="color:var(--orange-ink)">Conclusão</span><p style="color:var(--ink);font-weight:600;font-size:28px">Conversas de WhatsApp que viram reserva ou pedido</p><p style="font-size:26px">Medir 30 dias antes → aumentar</p></div>
+      <div class="card" style="padding:20px 32px;display:grid;grid-template-columns:230px 1fr 500px;gap:26px;align-items:center"><span class="small-cap" style="color:var(--orange-ink)">Atendimento</span><p style="color:var(--ink);font-weight:600;font-size:28px">Nota no Google Maps e avaliações sobre espera</p><p style="font-size:26px">Hoje 4,4 → manter 4,4 ou mais</p></div>
+      <div class="card" style="padding:20px 32px;display:grid;grid-template-columns:230px 1fr 500px;gap:26px;align-items:center"><span class="small-cap" style="color:var(--orange-ink)">Negócio</span><p style="color:var(--ink);font-weight:600;font-size:28px">Custo por contato</p><p style="font-size:26px">Anúncios atuais → ficar abaixo deles</p></div>
+    </div>
+    <p class="src" style="margin-top:22px">Contornos laranja: indicadores de mudança para o público. A mudança é esperada e ainda não foi medida: a primeira medição é a linha de base.</p>
+  </div>
+</section>
+
+<!-- 15 · IMPACTO NAS 6 ETAPAS -->
+<section class="slide" aria-label="Impacto nas seis etapas">
+  <div class="top"><span class="pill">Impacto social</span><span class="kicker">Leitura pelo CRISP-DM</span></div>
+  <h2>O impacto social atravessa as 6 etapas.</h2>
+  <div class="content mid">
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px">
+      <div class="card" style="padding:28px 32px"><div class="small-cap" style="color:var(--orange-ink)">1 · Negócio</div><p style="margin-top:10px;font-size:32px">Quem é afetado e quem pode ficar de fora</p></div>
+      <div class="card" style="padding:28px 32px"><div class="small-cap" style="color:var(--orange-ink)">2 · Dados</div><p style="margin-top:10px;font-size:32px">Mostram o conteúdo, não quem assistiu</p></div>
+      <div class="card" style="padding:28px 32px"><div class="small-cap" style="color:var(--orange-ink)">3 · Preparação</div><p style="margin-top:10px;font-size:32px">Sem dados pessoais; nada descartado em silêncio</p></div>
+      <div class="card" style="padding:28px 32px"><div class="small-cap" style="color:var(--orange-ink)">4 · Modelagem</div><p style="margin-top:10px;font-size:32px">Sem características de pessoas; associação não é causa</p></div>
+      <div class="card" style="padding:28px 32px"><div class="small-cap" style="color:var(--orange-ink)">5 · Avaliação</div><p style="margin-top:10px;font-size:32px">Benefício social esperado, ainda não medido; atenção ao tempo de espera</p></div>
+      <div class="card" style="padding:28px 32px"><div class="small-cap" style="color:var(--orange-ink)">6 · Implantação</div><p style="margin-top:10px;font-size:32px">Indicadores, responsáveis, canal de escuta e revisão a cada 2 meses</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 16 · CONCLUSÃO -->
+<section class="slide dark" aria-label="Conclusão">
+  <div class="top"><span class="kicker" style="color:var(--orange)">Do problema à decisão</span></div>
+  <h2 style="color:var(--cream)">Um Reel por mês, com <em style="color:var(--orange)">informação clara</em> para todos.</h2>
+  <div class="content">
+    <div class="three" style="gap:48px">
+      <div><div class="small-cap" style="color:var(--orange)">Problema</div><p style="font-size:32px;line-height:1.35;margin-top:14px;font-weight:500">Reels que viralizam, mas sem rotina nem informação clara</p></div>
+      <div><div class="small-cap" style="color:var(--orange)">Decisão</div><p style="font-size:32px;line-height:1.35;margin-top:14px;font-weight:500">Sabor novo todo mês com Paulo Bessa, impulsionado e testado em A/B</p></div>
+      <div><div class="small-cap" style="color:var(--orange)">Contribuição social</div><p style="font-size:32px;line-height:1.35;margin-top:14px;font-weight:500">Acesso à informação, acessibilidade e atendimento que responde</p></div>
+    </div>
+    <div style="margin-top:auto;border-top:2px solid #4A3C32;padding-top:26px">
+      <div class="small-cap" style="color:#9C9086">Falta verificar</div>
+      <p style="font-size:30px;line-height:1.4;margin-top:10px;font-weight:600;color:var(--cream)">Linhas de base · mini-teste de compreensão · efeito de Paulo Bessa no A/B · 100+ Reels por perfil, com datas e seguidores</p>
+    </div>
+  </div>
+</section>
+
+<!-- 17 · OBRIGADO -->
+<section class="slide orange bye" aria-label="Obrigado">
+  <svg class="deco" viewBox="0 0 1000 1000" aria-hidden="true">
+    <circle cx="500" cy="500" r="470" fill="none" stroke="#fff" stroke-opacity=".38" stroke-width="3"/>
+    <circle cx="500" cy="500" r="395" fill="none" stroke="#fff" stroke-opacity=".22" stroke-width="2"/>
+    <g stroke="#fff" stroke-opacity=".28" stroke-width="2">
+      <line x1="500" y1="500" x2="970" y2="500"/><line x1="500" y1="500" x2="832" y2="832"/>
+      <line x1="500" y1="500" x2="500" y2="970"/><line x1="500" y1="500" x2="168" y2="832"/>
+      <line x1="500" y1="500" x2="30" y2="500"/><line x1="500" y1="500" x2="168" y2="168"/>
+      <line x1="500" y1="500" x2="500" y2="30"/><line x1="500" y1="500" x2="832" y2="168"/>
+    </g>
+  </svg>
+  <h1>OBRIGADO</h1>
+  <p class="names">Pedro Nobre · Mell Lima · Daniel Câmara · Rodrigo Avelar · Pedro Lucas · Nicolas Balzon</p>
+</section>
+
+</div>
+
+<div class="progress" id="progress"></div>
+<script>
+(function(){
+  var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  var stage = document.getElementById('stage');
+  var bar = document.getElementById('progress');
+  var n = slides.length, cur = 0;
+
+  // acompanhamento das 6 fases do CRISP-DM
+  document.querySelectorAll('.phases').forEach(function(el){
+    var on = (el.getAttribute('data-on') || '').split(',');
+    el.setAttribute('aria-label','Fase ' + on.join(' e ') + ' de 6 do CRISP-DM');
+    var html = '<b>CRISP-DM</b>';
+    for (var i = 1; i <= 6; i++) html += '<i class="' + (on.indexOf(String(i)) > -1 ? 'act' : '') + '">' + i + '</i>';
+    el.innerHTML = html;
+  });
+
+  // rodapé e botões em cada slide
+  slides.forEach(function(s, i){
+    var f = document.createElement('div');
+    f.className = 'foot';
+    f.innerHTML = '<span>Pizza à Bessa · Ciência de Dados · CEUB</span><span style="margin-right:130px">' + String(i+1).padStart(2,'0') + ' / ' + String(n).padStart(2,'0') + '</span>';
+    s.appendChild(f);
+    var nv = document.createElement('div');
+    nv.className = 'nav';
+    nv.innerHTML = '<button type="button" aria-label="Slide anterior">‹</button><button type="button" aria-label="Próximo slide">›</button>';
+    nv.children[0].addEventListener('click', function(){ go(cur - 1); });
+    nv.children[1].addEventListener('click', function(){ go(cur + 1); });
+    s.appendChild(nv);
+  });
+
+  function fit(){
+    var s = Math.min(window.innerWidth / 1920, window.innerHeight / 1080);
+    stage.style.setProperty('--s', s);
+  }
+  function go(i){
+    i = Math.max(0, Math.min(n - 1, i));
+    slides.forEach(function(s, k){ s.classList.toggle('on', k === i); });
+    cur = i;
+    bar.style.width = ((i + 1) / n * 100) + '%';
+    try { history.replaceState(null, '', '#' + (i + 1)); } catch(e){}
+    document.title = 'Pizza à Bessa — ' + (i + 1) + '/' + n;
+  }
+  window.go = go;
+
+  document.addEventListener('keydown', function(e){
+    var k = e.key;
+    if (k === 'ArrowRight' || k === 'PageDown' || k === ' ' || k === 'Enter') { e.preventDefault(); go(cur + 1); }
+    else if (k === 'ArrowLeft' || k === 'PageUp' || k === 'Backspace') { e.preventDefault(); go(cur - 1); }
+    else if (k === 'Home') go(0);
+    else if (k === 'End') go(n - 1);
+    else if (k === 'f' || k === 'F') {
+      if (!document.fullscreenElement) document.documentElement.requestFullscreen && document.documentElement.requestFullscreen();
+      else document.exitFullscreen && document.exitFullscreen();
+    }
+  });
+  var x0 = null;
+  document.addEventListener('touchstart', function(e){ x0 = e.touches[0].clientX; }, {passive:true});
+  document.addEventListener('touchend', function(e){
+    if (x0 === null) return;
+    var dx = e.changedTouches[0].clientX - x0;
+    if (Math.abs(dx) > 60) go(cur + (dx < 0 ? 1 : -1));
+    x0 = null;
+  }, {passive:true});
+  window.addEventListener('resize', fit);
+  window.addEventListener('hashchange', function(){ var h = parseInt(location.hash.slice(1), 10); if (h) go(h - 1); });
+
+  fit();
+  var h0 = parseInt(location.hash.slice(1), 10);
+  go(h0 ? h0 - 1 : 0);
+})();
+</script>
+</body>
+</html>
